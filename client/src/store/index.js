@@ -6,10 +6,17 @@ const cartSlice = createSlice({
   reducers: {}
 });
 
+const userSlice = createSlice({
+  name: "user",
+  initialState: { loggedIn: false, firstName: null },
+  reducers: {}
+});
+
 const store = configureStore({
   devTools: true,
   reducer: {
-    cart: cartSlice.reducer
+    cart: cartSlice.reducer,
+    user: userSlice.reducer
   }
 });
 
