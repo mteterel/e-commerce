@@ -1,6 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import 'antd/dist/antd.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import Register from "./views/Register";
