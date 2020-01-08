@@ -45,10 +45,16 @@ class User implements UserInterface
      */
     private $reviews;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ShippingAddress", mappedBy="user", orphanRemoval=true)
+     */
+    private $shippingAddresses;
+
     public function __construct()
     {
         $this->cartItems = new ArrayCollection();
         $this->reviews = new ArrayCollection();
+        $this->shippingAddresses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -185,6 +191,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($review->getUser() === $this) {
                 $review->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ShippingAddress[]
+     */
+    public function getShippingAddresses(): Collection
+    {
+        return $this->shippingAddresses;
+    }
+
+    public function addShippingAddress(ShippingAddress $shippingAddress): self
+    {
+        if (!$this->shippingAddresses->contains($shippingAddress)) {
+            $this->shippingAddresses[] = $shippingAddress;
+            $shippingAddress->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShippingAddress(ShippingAddress $shippingAddress): self
+    {
+        if ($this->shippingAddresses->contains($shippingAddress)) {
+            $this->shippingAddresses->removeElement($shippingAddress);
+            // set the owning side to null (unless already changed)
+            if ($shippingAddress->getUser() === $this) {
+                $shippingAddress->setUser(null);
             }
         }
 
