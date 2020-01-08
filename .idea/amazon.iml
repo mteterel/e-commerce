@@ -6,6 +6,12 @@
       <sourceFolder url="file://$MODULE_DIR$/server/src" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/server/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/doctrine/data-fixtures" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/doctrine/doctrine-fixtures-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/lexik/jwt-authentication-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/namshi/jose" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/nelmio/cors-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

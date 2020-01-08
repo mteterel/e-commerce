@@ -1,6 +1,7 @@
 import React from "react";
 import LoginForm from "../components/LoginForm";
 import api from "../services/api";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const handleSubmit = loginData => {
@@ -20,6 +21,7 @@ const Login = () => {
 
   return (
     <div>
+      <Helmet title={"Login"} />
       <LoginForm onSubmit={handleSubmit} />
     </div>
   );
