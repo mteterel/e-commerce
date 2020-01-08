@@ -1,9 +1,21 @@
 import React from "react";
 import LoginForm from "../components/LoginForm";
+import api from "../services/api";
 
 const Login = () => {
-  const handleSubmit = () => {
-    alert("TODO: send form to server");
+  const handleSubmit = loginData => {
+    api
+      .login(loginData)
+      .then(response => {
+        alert(JSON.stringify(response.data));
+        if (response.data.token !== null) {
+          api.setAuthorizationToken(response.data.token);
+          alert("TOKEN SUCCESS: " + response.data.token);
+        }
+      })
+      .catch(err => {
+        alert("Error : " + JSON.stringify(err));
+      });
   };
 
   return (

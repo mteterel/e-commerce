@@ -16,7 +16,7 @@ const LoginForm = props => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (props.onSubmit) props.onSubmit();
+    if (props.onSubmit) props.onSubmit({ email: email, password: password });
   };
 
   return (
