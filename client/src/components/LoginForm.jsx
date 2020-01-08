@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Input, Row } from "antd";
+import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 
 const LoginForm = props => {
   const [email, setEmail] = useState("");
@@ -21,35 +21,26 @@ const LoginForm = props => {
 
   return (
     <div>
-      <Row>
-        <Col span={12} offset={6}>
-          <h2>LOGIN :</h2>
-          <Form onSubmit={handleSubmit}>
-            <Form.Item label="Email">
-              <Input
-                placeholder=""
-                value={email}
-                onChange={handleChangeEmail}
-              />
-            </Form.Item>
-            <Form.Item label="Password">
-              <Input.Password
-                placeholder=""
-                value={password}
-                onChange={handleChangePassword}
-              />
-            </Form.Item>
-            <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit" /*disabled={hasErrors(getFieldsError())}*/
-              >
+      <Container>
+        <Row>
+          <Col>
+            <h2>LOGIN :</h2>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="" value={email} onChange={handleChangeEmail}/>
+              </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="" value={password} onChange={handleChangePassword}/>
+              </Form.Group>
+              <Button variant="primary" type="submit">
                 Log in
               </Button>
-            </Form.Item>
-          </Form>
-        </Col>
-      </Row>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
