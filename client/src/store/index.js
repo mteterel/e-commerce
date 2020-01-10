@@ -8,7 +8,7 @@ const cartSlice = createSlice({
 
 const userSlice = createSlice({
   name: "user",
-  initialState: { loggedIn: false, firstName: null },
+  initialState: { loggedIn: false },
   reducers: {}
 });
 

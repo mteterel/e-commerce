@@ -11,8 +11,20 @@ class Api {
     this.axios.defaults.headers["Authorization"] = "Bearer " + token;
   }
 
-  login(data) {
-    return this.axios.post("/login_check", { ...data });
+  login(loginData) {
+    return this.axios.post("/login_check", { ...loginData });
+  }
+
+  fetchMyUserInfo() {
+    return this.axios.get("/user/me");
+  }
+
+  async fetchCategoryProducts(category) {
+    return (await this.axios.get("/category/" + category)).data;
+  }
+
+  async fetchProductInfo(productId) {
+    return (await this.axios.get("/product/" + productId)).data;
   }
 }
 
