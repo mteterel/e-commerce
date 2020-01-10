@@ -13,8 +13,12 @@ class ProductController extends AbstractController
      */
     public function index(Product $id)
     {
+        $repository = $this->getDoctrine()->getRepository(Product::class);
+        $product = $repository->find($id);
+
         return $this->render('product/index.html.twig', [
             'controller_name' => 'ProductController',
+            'product' => $product
         ]);
     }
 }

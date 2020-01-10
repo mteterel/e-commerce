@@ -33,9 +33,20 @@ class Category
      */
     private $subCategories;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="category", orphanRemoval=true)
+     */
+    private $products;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $spec_list = [];
+
     public function __construct()
     {
         $this->subCategories = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +105,49 @@ class Category
                 $subCategory->setParentCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->contains($product)) {
+            $this->products->removeElement($product);
+            // set the owning side to null (unless already changed)
+            if ($product->getCategory() === $this) {
+                $product->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getSpecList(): ?array
+    {
+        return $this->spec_list;
+    }
+
+    public function setSpecList(array $spec_list): self
+    {
+        $this->spec_list = $spec_list;
 
         return $this;
     }

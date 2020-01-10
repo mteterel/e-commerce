@@ -53,6 +53,17 @@ class Product
      */
     private $reviews;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $specs = [];
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -182,6 +193,30 @@ class Product
                 $review->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSpecs(): ?array
+    {
+        return $this->specs;
+    }
+
+    public function setSpecs(array $specs): self
+    {
+        $this->specs = $specs;
 
         return $this;
     }
