@@ -8,6 +8,7 @@ import Layout from "./views/Layout";
 import Product from "./views/Product";
 import Browse from "./views/Browse";
 import Cart from "./views/Cart";
+import CreateProduct from "./views/CreateProduct";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path={"/browse/:id"} component={Browse} />
           <Route exact path={"/product/:id"} component={Product} />
           <Route exact path={"/cart"} component={Cart} />
+          <Route exact path={"/admin/products/add"} component={CreateProduct} />
           <Route render={() => <h1>Not Found</h1>} />
         </Switch>
       </Router>

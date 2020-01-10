@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 
 const ProductForm = () => {
+    const categorie = false;
     return (
         <div>
             <Container>
