@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Container } from "react-bootstrap";
-import RegistrationForm from "../components/RegisterForm";
+import RegistrationForm from "../components/RegistrationForm";
 
 const Register = () => {
   return (
