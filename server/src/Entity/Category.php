@@ -24,14 +24,9 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="subCategories")
+     * @ORM\Column(type="json")
      */
-    private $parent_category;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent_category")
-     */
-    private $subCategories;
+    private $specsList = [];
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="category", orphanRemoval=true)
@@ -39,13 +34,12 @@ class Category
     private $products;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $spec_list = [];
+    private $slug;
 
     public function __construct()
     {
-        $this->subCategories = new ArrayCollection();
         $this->products = new ArrayCollection();
     }
 
@@ -66,45 +60,14 @@ class Category
         return $this;
     }
 
-    public function getParentCategory(): ?self
+    public function getSpecsList(): ?array
     {
-        return $this->parent_category;
+        return $this->specsList;
     }
 
-    public function setParentCategory(?self $parent_category): self
+    public function setSpecsList(array $specsList): self
     {
-        $this->parent_category = $parent_category;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|self[]
-     */
-    public function getSubCategories(): Collection
-    {
-        return $this->subCategories;
-    }
-
-    public function addSubCategory(self $subCategory): self
-    {
-        if (!$this->subCategories->contains($subCategory)) {
-            $this->subCategories[] = $subCategory;
-            $subCategory->setParentCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSubCategory(self $subCategory): self
-    {
-        if ($this->subCategories->contains($subCategory)) {
-            $this->subCategories->removeElement($subCategory);
-            // set the owning side to null (unless already changed)
-            if ($subCategory->getParentCategory() === $this) {
-                $subCategory->setParentCategory(null);
-            }
-        }
+        $this->specsList = $specsList;
 
         return $this;
     }
@@ -140,14 +103,14 @@ class Category
         return $this;
     }
 
-    public function getSpecList(): ?array
+    public function getSlug(): ?string
     {
-        return $this->spec_list;
+        return $this->slug;
     }
 
-    public function setSpecList(array $spec_list): self
+    public function setSlug(?string $slug): self
     {
-        $this->spec_list = $spec_list;
+        $this->slug = $slug;
 
         return $this;
     }

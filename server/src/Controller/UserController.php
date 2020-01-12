@@ -8,12 +8,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user/me", name="user")
+     * @Route("/users/me")
      */
     public function index()
     {
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
+        if ($this->getUser() === null) {
+            return $this->json([
+                "success" => false
+            ]);
+        }
+
+        return $this->json([
+            "success" => true,
+            "email" => $this->getUser()->getEmail()
         ]);
     }
 }

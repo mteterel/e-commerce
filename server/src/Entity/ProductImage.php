@@ -23,9 +23,9 @@ class ProductImage
     private $product;
 
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="text")
      */
-    private $photo;
+    private $url;
 
     public function getId(): ?int
     {
@@ -44,14 +44,14 @@ class ProductImage
         return $this;
     }
 
-    public function getPhoto()
+    public function getUrl(): ?string
     {
-        return $this->photo;
+        return $this->url;
     }
 
-    public function setPhoto($photo): self
+    public function setUrl(string $url): self
     {
-        $this->photo = $photo;
+        $this->url = $url;
 
         return $this;
     }

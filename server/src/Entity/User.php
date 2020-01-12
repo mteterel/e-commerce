@@ -36,11 +36,6 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CartItem", mappedBy="user", orphanRemoval=true)
-     */
-    private $cartItems;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="user", orphanRemoval=true)
      */
     private $reviews;
@@ -52,9 +47,7 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->cartItems = new ArrayCollection();
         $this->reviews = new ArrayCollection();
-        $this->shippingAddresses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -133,37 +126,6 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    /**
-     * @return Collection|CartItem[]
-     */
-    public function getCartItems(): Collection
-    {
-        return $this->cartItems;
-    }
-
-    public function addCartItem(CartItem $cartItem): self
-    {
-        if (!$this->cartItems->contains($cartItem)) {
-            $this->cartItems[] = $cartItem;
-            $cartItem->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCartItem(CartItem $cartItem): self
-    {
-        if ($this->cartItems->contains($cartItem)) {
-            $this->cartItems->removeElement($cartItem);
-            // set the owning side to null (unless already changed)
-            if ($cartItem->getUser() === $this) {
-                $cartItem->setUser(null);
-            }
-        }
-
-        return $this;
     }
 
     /**

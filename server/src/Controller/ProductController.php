@@ -2,23 +2,78 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Category;
 use App\Entity\Product;
+use App\Entity\ProductImage;
+use App\Entity\Review;
+use App\Repository\ProductRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/product/{id}", name="product")
+     * @Route("/products/", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
-    public function index(Product $id)
+    public function create()
     {
-        $repository = $this->getDoctrine()->getRepository(Product::class);
-        $product = $repository->find($id);
+        return $this->json([]);
+    }
 
-        return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
-            'product' => $product
+    /**
+     * @Route("/products/{id}", methods={"GET"})
+     * @param Product $product
+     * @return JsonResponse
+     */
+    public function read(Product $product)
+    {
+        $reviews = array_map(function (Review $review) {
+            return [
+                "user" => $review->getUser()->getEmail(),
+                "rating" => $review->getRating(),
+                "comment" => $review->getComment()
+            ];
+        }, $product->getReviews()->toArray());
+
+        $images = array_map(function (ProductImage $image) {
+            return $image->getUrl();
+        }, $product->getImages()->toArray());
+
+        return $this->json([
+            "id" => $product->getId(),
+            "name" => $product->getName(),
+            "price" => $product->getPrice(),
+            "shortDescription" => $product->getShortDescription(),
+            "advancedDescription" => $product->getAdvancedDescription(),
+            "specs" => $product->getSpecs(),
+            "reviews" => $reviews,
+            "images" => $images,
+            "sku" => $product->getSku()
         ]);
+    }
+
+    /**
+     * @Route("/products/{id}", methods={"PUT"})
+     * @IsGranted("ROLE_ADMIN")
+     * @param Product $product
+     * @return JsonResponse
+     */
+    public function update(Product $product)
+    {
+        return $this->json([]);
+    }
+
+    /**
+     * @Route("/products/{id}", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
+     * @param Product $product
+     * @return JsonResponse
+     */
+    public function delete(Product $product)
+    {
+        return $this->json([]);
     }
 }

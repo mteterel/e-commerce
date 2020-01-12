@@ -1,0 +1,16 @@
+@import "~bootstrap/scss/bootstrap";
+
+:global {
+  .slick-thumb {
+    position: static !important;
+  }
+
+  .slick-thumb li {
+    width: 32px !important;
+    height: auto !important;
+  }
+
+  li.slick-active .img-thumbnail {
+    border: 1px solid $blue;
+  }
+}

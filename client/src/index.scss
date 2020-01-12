@@ -1,2 +1,29 @@
-/** bootstrap override */
+@import "./styles/omega";
 @import "~bootstrap/scss/bootstrap";
+
+.container {
+  padding: 0 !important;
+}
+
+.tab-content {
+  border: 1px solid $table-border-color !important;
+}
+
+.nav-tabs {
+  margin-bottom: 0 !important;
+}
+
+.popover {
+  max-width: 360px;
+}
+
+.card-header-tabs {
+  // react-bootstrap bug fix
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.dropdown-toggle.nav-link {
+  // fix for dropdown alignment
+  padding: 0 !important;
+}

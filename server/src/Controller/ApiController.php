@@ -29,7 +29,7 @@ class ApiController extends AbstractController
     {
         $errors = [];
         foreach($request as $key => $value) {
-            if (isempty($value)) {
+            if (empty($value)) {
                 array_push($errors, "Please enter a value for " . $key);
             }
         }
@@ -67,7 +67,7 @@ class ApiController extends AbstractController
         $request = $this->jsonToArray($request);
         $errors = $this->errorsDetected($request);
 
-        if (!isempty($errors)) {
+        if (!empty($errors)) {
             return $this->render('api/index.html.twig', [
                 'controller_name' => 'ApiController',
                 'errors' => $errors
@@ -79,7 +79,7 @@ class ApiController extends AbstractController
             foreach($request['spec_list'] as $key => $value) {
                 array_push($newspec_list, $value);
             }
-            $category->setSpecList($newspec_list);
+            $category->setSpecsList($newspec_list);
 
             $manager = $this->getDoctrine()->getManager();
     
@@ -95,7 +95,7 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/category/{category}/edit", name="editCategory")
      */
-    public function editCategory(Request $request)
+    public function editCategory(Request $request, Category $category)
     {
         $manager = $this->getDoctrine()->getManager();
         $category = $manager->getRepository(Product::class)
@@ -105,7 +105,7 @@ class ApiController extends AbstractController
         $request = $this->jsonToArray($request);
         $errors = $this->errorsDetected($request);
 
-        if (!isempty($errors)) {
+        if (!empty($errors)) {
             return $this->render('api/index.html.twig', [
                 'controller_name' => 'ApiController',
                 'errors' => $errors
@@ -129,7 +129,7 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/{category}/deleting", name="deletingCategory")
      */
-    public function deletingCategory()
+    public function deletingCategory(Category $category)
     {
         $repository = $this->getDoctrine()->getRepository(Category::class);
         $categories = $repository->findOneBy([
@@ -185,7 +185,7 @@ class ApiController extends AbstractController
         $request = $this->jsonToArray($request);
         $errors = $this->errorsDetected($request);
         
-        if (!isempty($errors)) {
+        if (!empty($errors)) {
             return $this->render('api/index.html.twig', [
                 'controller_name' => 'ApiController',
                 'errors' => $errors
@@ -223,7 +223,7 @@ class ApiController extends AbstractController
         $request = $this->jsonToArray($request);
         $errors = $this->errorsDetected($request);
         
-        if (!isempty($errors)) {
+        if (!empty($errors)) {
             return $this->render('api/index.html.twig', [
                 'controller_name' => 'ApiController',
                 'errors' => $errors

@@ -1,0 +1,31 @@
+{
+  "Manufacturer": "Manufacturer",
+
+  "CPUInstructionSet": "Instruction Set",
+  "CPUArch": "Architecture",
+  "CPUSocket": "Socket",
+  "CPUNumOfCores": "Cores",
+  "CPUNumOfThreads": "Threads",
+  "CPUFrequencyBase": "Frequency",
+  "CPUFrequencyBoost": "Frequency (Boost)",
+
+  "GPUArch": "Architecture",
+  "GPUChip": "Chipset",
+  "GPUMemory": "Memory",
+  "GPUMemoryType": "Memory Type",
+  "GPUCUDACores": "CUDA Cores",
+  "GPUMemoryFreq": "Memory Frequency",
+  "GPUBaseClock": "Core Clock",
+  "GPUBoostClock": "Boost Clock",
+  "GPUInterface": "Interface",
+  "GPURTCores": "RT Cores",
+  "GPUTensorCores": "Tensor Cores",
+
+  "MBChipset": "Chipset",
+  "MBSocket": "Socket",
+  "MBNumOfMemSlot": "RAM Slots",
+  "MBMaxMemory": "Max RAM",
+  "MBFormFactor": "Form Factor",
+
+  "RAMCASLatency": "CAS Latency"
+}

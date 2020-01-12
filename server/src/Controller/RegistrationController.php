@@ -36,7 +36,7 @@ class RegistrationController extends AbstractController
     {
         $errors = [];
         foreach($request as $key => $value) {
-            if (isempty($value)) {
+            if (empty($value)) {
                 array_push($errors, "Please enter a value for " . $key);
             }
         }
@@ -50,29 +50,29 @@ class RegistrationController extends AbstractController
         $request = $this->jsonToArray($request);
         $errors = $this->errorsDetected($request);
 
-        if (!isempty($errors)) {
+        if (!empty($errors)) {
             return $this->render('registration/index.html.twig', [
                 'controller_name' => 'RegistrationController',
                 'errors' => $errors
             ]);
         } else {
             $address = new ShippingAddress();
-            $address->setFirstname($request['firstname']);
-            $address->setLastname($request['lastname']);
+            $address->setFirstName($request['firstname']);
+            $address->setLastName($request['lastname']);
             $address->setLine1($request['line1']);
             $address->setLine2($request['line2']);
             $address->setCity($request['city']);
-            $address->setZipcode($request['zipcode']);
+            $address->setZipCode($request['zipcode']);
             $address->setCountry($request['country']);
-    
+
             $user = new User();
             $user->setEmail($request['email']);
             $password = $passwordEncoder->encodePassword($user, $request['password']);
-                $user->setPassword($password);
+            $user->setPassword($password);
             $user->addShippingAddress($address);
 
             $manager = $this->getDoctrine()->getManager();
-    
+
             $manager->persist($user);
             $manager->persist($address);
             $manager->flush();
@@ -86,17 +86,17 @@ class RegistrationController extends AbstractController
         // $normalizers = [new ObjectNormalizer()];
 
         // $serializer = new Serializer($normalizers, $encoders);
-        
+
         // $user = $serializer->deserialize($request->getContent(), User::class, 'json');
         // $address = $serializer->deserialize($request->getContent(), ShippingAddress::class, 'json');
 
         // $address->setUser($user);
         // $manager = $this->getDoctrine()->getManager();
-    
+
         // $manager->persist($user);
         // $manager->persist($address);
         // $manager->flush();
-        
+
         return $this->render('registration/index.html.twig', [
             'controller_name' => 'RegistrationController',
         ]);

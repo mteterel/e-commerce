@@ -1,12 +1,16 @@
 import React from "react";
-import RegistrationForm from "../components/RegistrationForm";
 import { Helmet } from "react-helmet";
+import { Container } from "react-bootstrap";
+import RegistrationForm from "../components/RegisterForm";
 
 const Register = () => {
   return (
     <div>
       <Helmet title={"Register"} />
-      <RegistrationForm />
+      <Container>
+        <h2>REGISTER :</h2>
+        <RegistrationForm />
+      </Container>
     </div>
   );
 };

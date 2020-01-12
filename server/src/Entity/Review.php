@@ -34,14 +34,9 @@ class Review
     private $rating;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
     private $comment;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $publish_date;
 
     public function getId(): ?int
     {
@@ -89,21 +84,9 @@ class Review
         return $this->comment;
     }
 
-    public function setComment(?string $comment): self
+    public function setComment(string $comment): self
     {
         $this->comment = $comment;
-
-        return $this;
-    }
-
-    public function getPublishDate(): ?\DateTimeInterface
-    {
-        return $this->publish_date;
-    }
-
-    public function setPublishDate(\DateTimeInterface $publish_date): self
-    {
-        $this->publish_date = $publish_date;
 
         return $this;
     }
