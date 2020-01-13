@@ -40,7 +40,7 @@ const ProductForm = () => {
                                             <option key={i} value={category}>{category}</option>                                   
                                         )})
                                     }
-                                    </Form.Control>                                    
+                                </Form.Control>                                    
                                 </Form.Group>
                                 {
                                     errorMessage && (

@@ -48,6 +48,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
+        $this->shippingAddresses = new ArrayCollection();
     }
 
     public function getId(): ?int
