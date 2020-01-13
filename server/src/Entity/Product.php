@@ -24,9 +24,9 @@ class Product
     private $name;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
-    private $description;
+    private $shortDescription;
 
     /**
      * @ORM\Column(type="float")
@@ -34,14 +34,35 @@ class Product
     private $price;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $weight;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $stock;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $specs = [];
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $advancedDescription;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="product", orphanRemoval=true)
+     */
+    private $reviews;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ProductImage", mappedBy="product", orphanRemoval=true)
@@ -49,14 +70,14 @@ class Product
     private $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="product", orphanRemoval=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $reviews;
+    private $sku;
 
     public function __construct()
     {
-        $this->images = new ArrayCollection();
         $this->reviews = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,14 +97,14 @@ class Product
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getShortDescription(): ?string
     {
-        return $this->description;
+        return $this->shortDescription;
     }
 
-    public function setDescription(?string $description): self
+    public function setShortDescription(string $shortDescription): self
     {
-        $this->description = $description;
+        $this->shortDescription = $shortDescription;
 
         return $this;
     }
@@ -124,33 +145,38 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection|ProductImage[]
-     */
-    public function getImages(): Collection
+    public function getCategory(): ?Category
     {
-        return $this->images;
+        return $this->category;
     }
 
-    public function addImage(ProductImage $image): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setProduct($this);
-        }
+        $this->category = $category;
 
         return $this;
     }
 
-    public function removeImage(ProductImage $image): self
+    public function getSpecs(): ?array
     {
-        if ($this->images->contains($image)) {
-            $this->images->removeElement($image);
-            // set the owning side to null (unless already changed)
-            if ($image->getProduct() === $this) {
-                $image->setProduct(null);
-            }
-        }
+        return $this->specs;
+    }
+
+    public function setSpecs(array $specs): self
+    {
+        $this->specs = $specs;
+
+        return $this;
+    }
+
+    public function getAdvancedDescription(): ?string
+    {
+        return $this->advancedDescription;
+    }
+
+    public function setAdvancedDescription(string $advancedDescription): self
+    {
+        $this->advancedDescription = $advancedDescription;
 
         return $this;
     }
@@ -182,6 +208,49 @@ class Product
                 $review->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProductImage[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(ProductImage $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(ProductImage $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getProduct() === $this) {
+                $image->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getSku(): ?string
+    {
+        return $this->sku;
+    }
+
+    public function setSku(string $sku): self
+    {
+        $this->sku = $sku;
 
         return $this;
     }

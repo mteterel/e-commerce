@@ -1,32 +1,38 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Product from "./views/Product";
 import Home from "./views/Home";
+import Cart from "./views/Cart";
+import Browse from "./views/Browse";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import { Helmet } from "react-helmet";
-import Layout from "./views/Layout";
-import Product from "./views/Product";
-import Browse from "./views/Browse";
-import Cart from "./views/Cart";
+import _BaseLayout from "./views/_BaseLayout";
 import CreateProduct from "./views/CreateProduct";
 
 const App = () => {
   return (
-    <Layout className={"App"}>
+    <div>
       <Helmet titleTemplate={"%s · e-commerce"} />
       <Router>
-        <Switch>
-          <Route exact path={"/"} component={Home} />
-          <Route exact path={"/login"} component={Login} />
-          <Route exact path={"/register"} component={Register} />
-          <Route exact path={"/browse/:id"} component={Browse} />
-          <Route exact path={"/product/:id"} component={Product} />
-          <Route exact path={"/cart"} component={Cart} />
-          <Route exact path={"/admin/products/add"} component={CreateProduct} />
-          <Route render={() => <h1>Not Found</h1>} />
-        </Switch>
+        <_BaseLayout>
+          <Switch>
+            <Route exact path={"/"} component={Home} />
+            <Route exact path={"/cart"} component={Cart} />
+            <Route exact path={"/browse/:categoryId"} component={Browse} />
+            <Route exact path={"/product/:productId"} component={Product} />
+            <Route exact path={"/register"} component={Register} />
+            <Route exact path={"/login"} component={Login} />
+            <Route
+              exact
+              path={"/admin/products/add"}
+              component={CreateProduct}
+            />
+            <Route render={() => <h1>Not Found</h1>} />
+          </Switch>
+        </_BaseLayout>
       </Router>
-    </Layout>
+    </div>
   );
 };
 

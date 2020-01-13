@@ -24,18 +24,23 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="subCategories")
+     * @ORM\Column(type="json")
      */
-    private $parent_category;
+    private $specsList = [];
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent_category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="category", orphanRemoval=true)
      */
-    private $subCategories;
+    private $products;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $slug;
 
     public function __construct()
     {
-        $this->subCategories = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -55,45 +60,57 @@ class Category
         return $this;
     }
 
-    public function getParentCategory(): ?self
+    public function getSpecsList(): ?array
     {
-        return $this->parent_category;
+        return $this->specsList;
     }
 
-    public function setParentCategory(?self $parent_category): self
+    public function setSpecsList(array $specsList): self
     {
-        $this->parent_category = $parent_category;
+        $this->specsList = $specsList;
 
         return $this;
     }
 
     /**
-     * @return Collection|self[]
+     * @return Collection|Product[]
      */
-    public function getSubCategories(): Collection
+    public function getProducts(): Collection
     {
-        return $this->subCategories;
+        return $this->products;
     }
 
-    public function addSubCategory(self $subCategory): self
+    public function addProduct(Product $product): self
     {
-        if (!$this->subCategories->contains($subCategory)) {
-            $this->subCategories[] = $subCategory;
-            $subCategory->setParentCategory($this);
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeSubCategory(self $subCategory): self
+    public function removeProduct(Product $product): self
     {
-        if ($this->subCategories->contains($subCategory)) {
-            $this->subCategories->removeElement($subCategory);
+        if ($this->products->contains($product)) {
+            $this->products->removeElement($product);
             // set the owning side to null (unless already changed)
-            if ($subCategory->getParentCategory() === $this) {
-                $subCategory->setParentCategory(null);
+            if ($product->getCategory() === $this) {
+                $product->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

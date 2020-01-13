@@ -19,12 +19,12 @@ class ShippingAddress
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstname;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lastname;
+    private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,7 +39,7 @@ class ShippingAddress
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $zipcode;
+    private $zipCode;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -62,26 +62,26 @@ class ShippingAddress
         return $this->id;
     }
 
-    public function getFirstname(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->firstname;
+        return $this->firstName;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstName(string $firstName): self
     {
-        $this->firstname = $firstname;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getLastname(): ?string
+    public function getLastName(): ?string
     {
-        return $this->lastname;
+        return $this->lastName;
     }
 
-    public function setLastname(string $lastname): self
+    public function setLastName(string $lastName): self
     {
-        $this->lastname = $lastname;
+        $this->lastName = $lastName;
 
         return $this;
     }
@@ -110,14 +110,14 @@ class ShippingAddress
         return $this;
     }
 
-    public function getZipcode(): ?string
+    public function getZipCode(): ?string
     {
-        return $this->zipcode;
+        return $this->zipCode;
     }
 
-    public function setZipcode(string $zipcode): self
+    public function setZipCode(string $zipCode): self
     {
-        $this->zipcode = $zipcode;
+        $this->zipCode = $zipCode;
 
         return $this;
     }
