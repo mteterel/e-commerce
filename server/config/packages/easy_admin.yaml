@@ -1,0 +1,28 @@
+easy_admin:
+  entities:
+    Category:
+      class: App\Entity\Category
+      form:
+        fields:
+          - 'name'
+          - 'slug'
+          -
+            property: 'specsList'
+            type: 'App\Form\Type\JsonType'
+    Product:
+      class: App\Entity\Product
+      form:
+        fields:
+          - 'name'
+          - 'category'
+          - 'shortDescription'
+          - 'advancedDescription'
+          - 'price'
+          - 'weight'
+          - 'stock'
+          - 'sku'
+          -
+            property: 'specs'
+            type: 'App\Form\Type\JsonType'
+    User:
+      class: App\Entity\User
