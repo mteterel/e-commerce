@@ -59,7 +59,7 @@ const AppNavBar1 = props => {
                 <FaShoppingCart className={styles.FaShoppingCart} color="white"/>              
                 <Badge pill variant={"primary"} className={styles.BadgeCart}>{props.cartProducts.length}</Badge>
                 </div>
-                <span className={styles.cart}>Shopping&nbsp;</span>
+                <span className={styles.cart}>Cart&nbsp;</span>
               </Nav.Link>
             </OverlayTrigger>
           {/* </div> */}
