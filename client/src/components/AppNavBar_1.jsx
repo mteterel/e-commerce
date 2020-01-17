@@ -45,19 +45,19 @@ const AppNavBar1 = props => {
           </Col>
           <Col xs lg="1">
             {/* <Nav> */}
-            {/* <div className={styles.test}> */}
+            <div className={styles.test}>
             <OverlayTrigger
               trigger={"click"}
               placement="bottom"
               overlay={
-                <Popover id={"popover-mini-cart"}>
-                  <PopoverContent>
+                <Popover id={"popover-mini-cart"} className={styles.popover}>
+                  <PopoverContent className={styles.popoverContent}>
                     <MiniCart />
                   </PopoverContent>
                 </Popover>
               }
             >
-              <Nav.Link>
+              <Nav.Link className={styles.navlink}>
                 <div className={styles.testdiv}>
                   <FaShoppingCart
                     className={styles.FaShoppingCart}
@@ -70,7 +70,7 @@ const AppNavBar1 = props => {
                 <span className={styles.cart}>Cart&nbsp;</span>
               </Nav.Link>
             </OverlayTrigger>
-            {/* </div> */}
+            </div>
           </Col>
           <Col xs lg="1">
             <Nav.Link>

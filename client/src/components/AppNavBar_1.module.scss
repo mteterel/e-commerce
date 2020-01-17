@@ -3,8 +3,9 @@
   // border: 1px solid red;
 }
 .FaShoppingCart {
-  //border: 1px solid red;
-  margin-left: 5px;
+  // border: 1px solid green;
+  margin-left: -10px;
+  size: 100%;
   width: 50px;
   height: 50px;
 }
@@ -12,6 +13,7 @@
   // border: 1px solid red;
   width: 46px;
   height: 46px;
+  size: 100%;
   margin-left: 5px;
   margin-top: 4px;
 }
@@ -20,16 +22,16 @@
   // padding-top: 15px;
 }
 .test {
-  // border: 1px solid green;
+  //    border: 1px solid green;
   width: 100%;
   text-align: center;
 }
 .cart {
-  margin-left: 20px;
+  margin-left: 2px;
 }
 .BadgeCart {
   position: absolute;
-  right: 0;
+  right: 5px;
   top: 0;
 }
 .search_bar {
@@ -48,3 +50,12 @@
 .search:focus {
   border: 0;
 }
+
+.navlink{
+    // border: 1px solid red;
+    height: 80px;
+    // width: 120px;
+    // padding-left: 380px;
+}
+
+
