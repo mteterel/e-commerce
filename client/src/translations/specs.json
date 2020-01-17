@@ -27,5 +27,8 @@
   "MBMaxMemory": "Max RAM",
   "MBFormFactor": "Form Factor",
 
-  "RAMCASLatency": "CAS Latency"
+  "RAMCASLatency": "CAS Latency",
+  "RAMMemoryType": "Memory Type",
+  "RAMCapacity": "Capacity",
+  "RAMFrequency": "Frequency"
 }

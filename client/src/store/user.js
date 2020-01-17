@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import apiService from "../api";
 
 const userSlice = createSlice({
   name: "user",
@@ -11,9 +12,13 @@ const userSlice = createSlice({
       state.isLoggedIn = true;
       state.username = tokenData.username;
       state.token = payload.token;
+      apiService.setAuthorizationToken(payload.token);
     },
     logout: (state, action) => {
       state.isLoggedIn = false;
+      state.username = null;
+      state.token = null;
+      apiService.setAuthorizationToken(null);
     }
   }
 });

@@ -11,7 +11,6 @@ const Login = props => {
 
   useEffect(() => {
     if (props.isLoggedIn) {
-      // TODO: redirect to expected page
       history.push("/");
     }
   }, [props.isLoggedIn]);
@@ -24,7 +23,7 @@ const Login = props => {
     <div>
       <Helmet title={"Login"} />
       <Container>
-        <h2>LOGIN {props.isLoggedIn ? "true" : "false"} :</h2>
+        <h2>LOGIN:</h2>
         <LoginForm onSubmit={handleSubmit} />
       </Container>
     </div>

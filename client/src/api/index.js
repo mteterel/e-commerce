@@ -3,19 +3,29 @@ import axios from "axios";
 class ApiService {
   constructor() {
     this.client = axios.create({ baseURL: "https://localhost:8000" });
-    this.authoriationToken = null;
+    this.authorizationToken = null;
   }
 
   setAuthorizationToken(token) {
-    this.authoriationToken = token;
+    this.authorizationToken = token;
+    axios.defaults.headers.common["Authorization"] = token
+      ? "Bearer " + token
+      : null;
+  }
+
+  login(email, password) {
+    return this.client.post("/api/login_check", {
+      email: email,
+      password: password
+    });
   }
 
   fetchProductsFromCategory(categoryId) {
-      return this.client.get("/categories/" + categoryId + "/products")
+    return this.client.get("/categories/" + categoryId + "/products");
   }
 
   fetchFiltersFromCategory(categoryId) {
-    return this.client.get("/categories/" + categoryId + "/filters")
+    return this.client.get("/categories/" + categoryId + "/filters");
   }
 
   fetchProductInfos(productId) {
