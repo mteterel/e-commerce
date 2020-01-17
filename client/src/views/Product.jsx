@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router";
-import axios from "axios";
-import { Col, Container, Row, Spinner, Tab, Table, TabPane, Tabs } from "react-bootstrap";
+import apiService from "../api";
+import { Col, Container, Row, Spinner, Tab, Tabs } from "react-bootstrap";
 import "slick-carousel/slick/slick-theme.scss";
 import "slick-carousel/slick/slick.scss";
 import ProductGallery from "../components/ProductGallery";
@@ -10,7 +10,8 @@ import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import AddToCartButton from "../components/AddToCartButton";
 import ReactMarkdown from "react-markdown";
-import SpecsTranslation from "../translations/specs";
+import SpecListTable from "../components/ProductPage/SpecListTable";
+import CommentTab from "../components/ProductPage/CommentTab";
 
 const Product = props => {
   const params = useParams();
@@ -28,8 +29,8 @@ const Product = props => {
 
   useEffect(() => {
     setIsFetching(true);
-    axios
-      .get("https://localhost:8000/products/" + params.productId)
+    apiService
+      .fetchProductInfos(params.productId)
       .then(res => {
         setProductInfo(res.data);
       })
@@ -60,7 +61,10 @@ const Product = props => {
               )}
               <div>
                 <strong>Price: </strong>
-                <span className={"text-primary"} style={{ fontSize: "1.2em", verticalAlign: "middle"}}>
+                <span
+                  className={"text-primary"}
+                  style={{ fontSize: "1.2em", verticalAlign: "middle" }}
+                >
                   {productInfo.price.toFixed(2)} €
                 </span>
               </div>
@@ -92,29 +96,17 @@ const Product = props => {
                       <ReactMarkdown source={productInfo.advancedDescription} />
                     </Tab>
                   )}
-                  {(productInfo.specs && Object.keys(productInfo.specs).length > 0) && (
-                    <Tab eventKey={"specifications"} title={"Specifications"}>
-                      <Table
-                        striped
-                        bordered
-                        size={"sm"}
-                        style={{ marginBottom: 0 }}
-                      >
-                        <tbody>
-                          {Object.keys(productInfo.specs).map((v, i) => (
-                            <tr key={i}>
-                              <th>{SpecsTranslation[v] ?? v}</th>
-                              <td>
-                                <ReactMarkdown source={productInfo.specs[v]} />
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                    </Tab>
-                  )}
+                  {productInfo.specs &&
+                    Object.keys(productInfo.specs).length > 0 && (
+                      <Tab eventKey={"specifications"} title={"Specifications"}>
+                        <SpecListTable specs={productInfo.specs} />
+                      </Tab>
+                    )}
                   <Tab eventKey="reviews" title="Reviews">
-                    <TabPane>aaaa</TabPane>
+                    <CommentTab
+                      productId={productInfo.id}
+                      reviews={productInfo.reviews}
+                    />
                   </Tab>
                 </Tabs>
               </div>

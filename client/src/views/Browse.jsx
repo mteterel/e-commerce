@@ -5,6 +5,7 @@ import { Col, Form, ListGroup, Row, Spinner } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import ProductGrid from "../components/ProductGrid";
 import SpecTranslation from "../translations/specs";
+import apiService from "../api";
 
 const Browse = () => {
   const params = useParams();
@@ -17,18 +18,13 @@ const Browse = () => {
   useEffect(() => {
     setIsFetching(true);
     setAvailableFilters([]);
-    axios
-      .get(
-        "https://localhost:8000/categories/" + params.categoryId + "/filters"
-      )
-      .then(res => {
-        setAvailableFilters(res.data.filters);
-      });
 
-    axios
-      .get(
-        "https://localhost:8000/categories/" + params.categoryId + "/products"
-      )
+    apiService.fetchFiltersFromCategory(params.categoryId).then(res => {
+      setAvailableFilters(res.data.filters);
+    });
+
+    apiService
+      .fetchProductsFromCategory(params.categoryId)
       .then(res => {
         setProducts(res.data.products);
         setProductCount(res.data.productsCount);

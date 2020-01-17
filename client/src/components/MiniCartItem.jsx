@@ -6,7 +6,9 @@ import styles from "./MiniCartItem.module.scss";
 const MiniCartItem = props => {
   const v = props.product;
   const [isZoomed, setIsZoomed] = useState(false);
-  const applyTransition = useMemo(() => { return !isZoomed }, [isZoomed]);
+  const applyTransition = useMemo(() => {
+    return !isZoomed;
+  }, [isZoomed]);
 
   const handleMouseEnter = () => {
     //setIsZoomed(false);

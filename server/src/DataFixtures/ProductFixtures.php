@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Product;
 use App\Entity\ProductImage;
+use App\Entity\Review;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -160,6 +161,14 @@ class ProductFixtures extends Fixture
             "GPURTCores" => "48"
         ]);
         $product->setCategory($this->getReference("c__GPU"));
+
+        $review = new Review();
+        $review->setUser($this->getReference("testuser"));
+        $review->setComment("Je suis un Pangolin Malin !");
+        $review->setRating(3.0);
+        $manager->persist($review);
+
+        $product->addReview($review);
 
         $manager->persist($product);
     }

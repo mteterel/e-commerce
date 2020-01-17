@@ -10,9 +10,13 @@ const Home = () => {
       <Helmet title={"Home"} />
       <div>
         <ul>
-        {categories.map((v,i) => (
-          <li key={i}><Link to={"/browse/" + v}>Browse <strong>{v}</strong></Link></li>
-        ))}
+          {categories.map((v, i) => (
+            <li key={i}>
+              <Link to={"/browse/" + v}>
+                Browse <strong>{v}</strong>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

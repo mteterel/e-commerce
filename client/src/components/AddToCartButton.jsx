@@ -10,7 +10,12 @@ const AddToCartButton = props => {
   };
 
   return (
-    <Button variant={"primary"} onClick={addToCart} style={{...props.style}} {...props.buttonProps}>
+    <Button
+      variant={"primary"}
+      onClick={addToCart}
+      style={{ ...props.style }}
+      {...props.buttonProps}
+    >
       Add to Cart
     </Button>
   );

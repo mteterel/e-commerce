@@ -7,7 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 
-class UserFixtures extends Fixture
+class FirstUserFixtures extends Fixture
 {
     private $passwordEncoder;
 
@@ -24,6 +24,7 @@ class UserFixtures extends Fixture
             $user,
             'test'
         ));
+        $this->addReference("testuser", $user);
         $manager->persist($user);
         $manager->flush();
     }

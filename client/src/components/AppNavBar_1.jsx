@@ -2,6 +2,7 @@ import React from "react";
 import {
   Badge,
   Button,
+  Col,
   Container,
   FormControl,
   InputGroup,
@@ -10,17 +11,12 @@ import {
   OverlayTrigger,
   Popover,
   PopoverContent,
-  Row,
-  Col
+  Row
 } from "react-bootstrap";
 import MiniCart from "./MiniCart";
 import { connect } from "react-redux";
 import Logo from "../assets/master.png";
-import { 
-  FaSearch, 
-  FaUser,
-  FaShoppingCart
- } from "react-icons/fa";
+import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import styles from "./AppNavBar_1.module.scss";
 
 const AppNavBar1 = props => {
@@ -29,19 +25,27 @@ const AppNavBar1 = props => {
       <Container>
         <Row>
           <Col xs lg="2">
-            <Navbar.Brand href="/"><img src={Logo} className={styles.BaseLogo}/></Navbar.Brand>
+            <Navbar.Brand href="/">
+              <img src={Logo} className={styles.BaseLogo} />
+            </Navbar.Brand>
           </Col>
           <Col xs lg="8">
             <InputGroup className={styles.search_bar}>
-              <FormControl className={styles.search} type="search" placeholder="Search for products"/>
+              <FormControl
+                className={styles.search}
+                type="search"
+                placeholder="Search for products"
+              />
               <InputGroup.Append>
-                <Button className={styles.SearchButton}><FaSearch className={styles.FaSearch}/></Button>
+                <Button className={styles.SearchButton}>
+                  <FaSearch className={styles.FaSearch} />
+                </Button>
               </InputGroup.Append>
             </InputGroup>
           </Col>
           <Col xs lg="1">
-          {/* <Nav> */}
-          {/* <div className={styles.test}> */}
+            {/* <Nav> */}
+            {/* <div className={styles.test}> */}
             <OverlayTrigger
               trigger={"click"}
               placement="bottom"
@@ -53,23 +57,29 @@ const AppNavBar1 = props => {
                 </Popover>
               }
             >
-              
               <Nav.Link>
                 <div className={styles.testdiv}>
-                <FaShoppingCart className={styles.FaShoppingCart} color="white"/>              
-                <Badge pill variant={"primary"} className={styles.BadgeCart}>{props.cartProducts.length}</Badge>
+                  <FaShoppingCart
+                    className={styles.FaShoppingCart}
+                    color="white"
+                  />
+                  <Badge pill variant={"primary"} className={styles.BadgeCart}>
+                    {props.cartProducts.length}
+                  </Badge>
                 </div>
                 <span className={styles.cart}>Cart&nbsp;</span>
               </Nav.Link>
             </OverlayTrigger>
-          {/* </div> */}
+            {/* </div> */}
           </Col>
           <Col xs lg="1">
-            <Nav.Link>  
-              <FaUser className={styles.FaUser} color="white"/>
-              <span className={styles.user}>{props.user.username ?? "Account"}</span>
+            <Nav.Link>
+              <FaUser className={styles.FaUser} color="white" />
+              <span className={styles.user}>
+                {props.user.username ?? "Account"}
+              </span>
             </Nav.Link>
-          {/* </Nav> */}
+            {/* </Nav> */}
           </Col>
         </Row>
       </Container>
