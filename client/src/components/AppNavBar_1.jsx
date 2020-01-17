@@ -21,7 +21,7 @@ import styles from "./AppNavBar_1.module.scss";
 
 const AppNavBar1 = props => {
   return (
-    <Navbar bg="dark" variant="dark" style={{ padding: "1em" }}>
+    <Navbar bg="dark" variant="dark" className={styles.navbar_top} style={{ padding: "1em" }}>
       <Container>
         <Row>
           <Col xs lg="2">
