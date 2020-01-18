@@ -24,13 +24,14 @@ class ProductFixtures extends Fixture
 
     private function injectSpecs(array $specs, Product $product, ObjectManager $manager)
     {
-        $repository = $manager->getRepository(SpecDefinition::class);
         foreach($specs as $key => $value) {
-            $specDef = $repository->findOneBy([ 'name' => $key ]);
-            if ($specDef === null) {
+            if (false === $this->hasReference("spec__$key")) {
                 $specDef = new SpecDefinition();
                 $specDef->setName($key);
                 $manager->persist($specDef);
+                $this->setReference("spec__$key", $specDef);
+            } else {
+                $specDef = $this->getReference("spec__$key");
             }
 
             $productSpec = new ProductSpec();
