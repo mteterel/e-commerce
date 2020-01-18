@@ -16,7 +16,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/categories/", methods={"GET"})
      */
-    public function index(CategoryRepository $categorieRepository): Response
+    public function index(CategoryRepository $categorieRepository)
     {
         return $this->json(["categories" => $categorieRepository->categoryList()]);
     }
