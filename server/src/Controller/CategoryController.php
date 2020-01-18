@@ -13,6 +13,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
+     * @Route("/categories/", methods={"GET"})
+     */
+    public function index(CategoryRepository $categorieRepository): Response
+    {
+        return $this->json(["categories" => $categorieRepository->categoryList()]);
+    }
+
+    /**
      * @Route("/categories/{slug}/products", methods={"GET"})
      * @param Category $category
      * @return JsonResponse

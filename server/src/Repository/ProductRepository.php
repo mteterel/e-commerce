@@ -19,6 +19,18 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    /**
+     * @return Category[] Returns an array of Category objects
+     */ 
+    public function categoryList()
+    {
+        $db = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT * FROM category c';
+        $categories = $db->prepare($sql);
+        $categories->execute();
+        return $categories->fetchAll();
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
