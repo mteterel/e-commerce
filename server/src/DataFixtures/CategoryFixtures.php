@@ -43,7 +43,7 @@ class CategoryFixtures extends Fixture
             $category = new Category();
             $category->setSlug($c["slug"] ?? null);
             $category->setName($c["name"]);
-            $category->setSpecsList($c["specsList"] ?? []);
+            //$category->setSpecsList($c["specsList"] ?? []);
             $manager->persist($category);
             $this->addReference("c__" . $c["name"], $category);
         }

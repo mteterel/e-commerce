@@ -4,7 +4,9 @@ namespace App\DataFixtures;
 
 use App\Entity\Product;
 use App\Entity\ProductImage;
+use App\Entity\ProductSpec;
 use App\Entity\Review;
+use App\Entity\SpecDefinition;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -17,6 +19,25 @@ class ProductFixtures extends Fixture
             $image->setUrl($url);
             $image->setProduct($product);
             $manager->persist($image);
+        }
+    }
+
+    private function injectSpecs(array $specs, Product $product, ObjectManager $manager)
+    {
+        $repository = $manager->getRepository(SpecDefinition::class);
+        foreach($specs as $key => $value) {
+            $specDef = $repository->findOneBy([ 'name' => $key ]);
+            if ($specDef === null) {
+                $specDef = new SpecDefinition();
+                $specDef->setName($key);
+                $manager->persist($specDef);
+            }
+
+            $productSpec = new ProductSpec();
+            $productSpec->setProduct($product);
+            $productSpec->setValue($value);
+            $productSpec->setSpec($specDef);
+            $manager->persist($productSpec);
         }
     }
 
@@ -35,7 +56,7 @@ class ProductFixtures extends Fixture
             "https://www.topachat.com/boutique/img/in/in1011/in10116736/05.jpg",
             "https://www.topachat.com/boutique/img/in/in1011/in10116736/06.jpg"
         ], $product, $manager);
-        $product->setSpecs([
+        $this->injectSpecs([
             "Manufacturer" => "Gigabyte",
             "GPUChip" => "NVIDIA GeForce RTX 2060",
             "GPUArch" => "Turing",
@@ -43,7 +64,7 @@ class ProductFixtures extends Fixture
             "GPUMemoryType" => "GDDR6",
             "GPUMemoryFreq" => "14000 MHz",
             "GPUCUDACores" => "1920"
-        ]);
+        ], $product, $manager);
         $product->setCategory($this->getReference("c__GPU"));
 
         $manager->persist($product);
@@ -61,7 +82,7 @@ class ProductFixtures extends Fixture
             "https://www.topachat.com/boutique/img/in/in1011/in10114553/02.jpg",
             "https://www.topachat.com/boutique/img/in/in1011/in10114553/03.jpg"
         ], $product, $manager);
-        $product->setSpecs([
+        $this->injectSpecs([
             "CPUArch" => "Coffee Lake Refresh",
             "CPUSocket" => "LGA 1151",
             "CPUFrequencyBase" => "3,7 GHz",
@@ -69,7 +90,7 @@ class ProductFixtures extends Fixture
             "CPUNumOfCores" => "6",
             "CPUNumOfThreads" => "6",
             "CPUInstructionSet" => "x64",
-        ]);
+        ], $product, $manager);
         $product->setCategory($this->getReference("c__CPU"));
 
         $manager->persist($product);
@@ -87,11 +108,11 @@ class ProductFixtures extends Fixture
             "https://www.topachat.com/boutique/img/in/in1011/in10114534/03.jpg",
             "https://www.topachat.com/boutique/img/in/in1011/in10114534/04.jpg",
             "https://www.topachat.com/boutique/img/in/in1011/in10114534/05.jpg"], $product, $manager);
-        $product->setSpecs([
+        $this->injectSpecs([
             "MBChipset" => "Intel® Z390",
             "MBSocket" => "LGA 1151",
             "MBFormFactor" => "ATX"
-        ]);
+        ], $product, $manager);
         $product->setCategory($this->getReference("c__Motherboard"));
 
         $manager->persist($product);
@@ -119,12 +140,12 @@ class ProductFixtures extends Fixture
             "https://www.topachat.com/boutique/img/in/in1011/in10116968/in1011696802.jpg",
             "https://www.topachat.com/boutique/img/in/in1011/in10116968/01.jpg"
         ], $product, $manager);
-        $product->setSpecs([
+        $this->injectSpecs([
             "RAMMemoryType" => "DDR4",
             "RAMCapacity" => "16 GB",
             "RAMFrequency" => "3200 MHz",
             "RAMCASLatency" => "16"
-        ]);
+        ], $product, $manager);
         $product->setCategory($this->getReference("c__RAM"));
 
         $manager->persist($product);
@@ -147,7 +168,7 @@ class ProductFixtures extends Fixture
             "https://www.topachat.com/boutique/img/in/in1101/in11017555/07.jpg",
             "https://www.topachat.com/boutique/img/in/in1101/in11017555/08.jpg"
         ], $product, $manager);
-        $product->setSpecs([
+        $this->injectSpecs([
             "Manufacturer" => "MSI",
             "GPUChip" => "NVIDIA GeForce RTX 2080 SUPER",
             "GPUArch" => "Turing",
@@ -159,7 +180,7 @@ class ProductFixtures extends Fixture
             "GPUCUDACores" => "3072",
             "GPUTensorCores" => "384",
             "GPURTCores" => "48"
-        ]);
+        ], $product, $manager);
         $product->setCategory($this->getReference("c__GPU"));
 
         $review = new Review();

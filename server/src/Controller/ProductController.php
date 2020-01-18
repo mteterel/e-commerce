@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\ProductImage;
+use App\Entity\ProductSpec;
 use App\Entity\Review;
 use App\Repository\ProductRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -42,13 +43,18 @@ class ProductController extends AbstractController
             return $image->getUrl();
         }, $product->getImages()->toArray());
 
+        $specs = array_reduce($product->getProductSpecs()->toArray(), function ($carry, ProductSpec $spec) {
+            $carry[$spec->getSpec()->getName()] = $spec->getValue();
+            return $carry;
+        }, []);
+
         return $this->json([
             "id" => $product->getId(),
             "name" => $product->getName(),
             "price" => $product->getPrice(),
             "shortDescription" => $product->getShortDescription(),
             "advancedDescription" => $product->getAdvancedDescription(),
-            "specs" => $product->getSpecs(),
+            "specs" => $specs,
             "reviews" => $reviews,
             "images" => $images,
             "sku" => $product->getSku()

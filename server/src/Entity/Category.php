@@ -24,11 +24,6 @@ class Category
     private $name;
 
     /**
-     * @ORM\Column(type="json")
-     */
-    private $specsList = [];
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="category", orphanRemoval=true)
      */
     private $products;
@@ -38,9 +33,15 @@ class Category
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\SpecDefinition")
+     */
+    private $assignableSpecs;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->assignableSpecs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,18 +57,6 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getSpecsList(): ?array
-    {
-        return $this->specsList;
-    }
-
-    public function setSpecsList(array $specsList): self
-    {
-        $this->specsList = $specsList;
 
         return $this;
     }
@@ -117,5 +106,31 @@ class Category
 
     public function __toString() {
         return $this->getName();
+    }
+
+    /**
+     * @return Collection|SpecDefinition[]
+     */
+    public function getAssignableSpecs(): Collection
+    {
+        return $this->assignableSpecs;
+    }
+
+    public function addAssignableSpec(SpecDefinition $assignableSpec): self
+    {
+        if (!$this->assignableSpecs->contains($assignableSpec)) {
+            $this->assignableSpecs[] = $assignableSpec;
+        }
+
+        return $this;
+    }
+
+    public function removeAssignableSpec(SpecDefinition $assignableSpec): self
+    {
+        if ($this->assignableSpecs->contains($assignableSpec)) {
+            $this->assignableSpecs->removeElement($assignableSpec);
+        }
+
+        return $this;
     }
 }

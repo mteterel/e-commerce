@@ -6,9 +6,7 @@ easy_admin:
         fields:
           - 'name'
           - 'slug'
-          -
-            property: 'specsList'
-            type: 'App\Form\Type\JsonType'
+          - 'assignableSpecs'
     Product:
       class: App\Entity\Product
       form:
@@ -22,7 +20,15 @@ easy_admin:
           - 'stock'
           - 'sku'
           -
-            property: 'specs'
-            type: 'App\Form\Type\JsonType'
+            property: 'productSpecs'
+            type: 'collection'
+            type_options:
+              entry_type: App\Form\Type\ProductSpecType
+              by_reference: false
+    SpecDefinition:
+      class: App\Entity\SpecDefinition
+      form:
+        fields:
+          - 'name'
     User:
       class: App\Entity\User

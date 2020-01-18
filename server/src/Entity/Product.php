@@ -50,11 +50,6 @@ class Product
     private $category;
 
     /**
-     * @ORM\Column(type="json")
-     */
-    private $specs = [];
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $advancedDescription;
@@ -74,10 +69,16 @@ class Product
      */
     private $sku;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ProductSpec", mappedBy="product", cascade={"persist"}, orphanRemoval=true)
+     */
+    private $productSpecs;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->productSpecs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -153,18 +154,6 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    public function getSpecs(): ?array
-    {
-        return $this->specs;
-    }
-
-    public function setSpecs(array $specs): self
-    {
-        $this->specs = $specs;
 
         return $this;
     }
@@ -258,5 +247,36 @@ class Product
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * @return Collection|ProductSpec[]
+     */
+    public function getProductSpecs(): Collection
+    {
+        return $this->productSpecs;
+    }
+
+    public function addProductSpec(ProductSpec $productSpec): self
+    {
+        if (!$this->productSpecs->contains($productSpec)) {
+            $this->productSpecs[] = $productSpec;
+            $productSpec->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductSpec(ProductSpec $productSpec): self
+    {
+        if ($this->productSpecs->contains($productSpec)) {
+            $this->productSpecs->removeElement($productSpec);
+            // set the owning side to null (unless already changed)
+            if ($productSpec->getProduct() === $this) {
+                $productSpec->setProduct(null);
+            }
+        }
+
+        return $this;
     }
 }
