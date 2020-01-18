@@ -27,3 +27,43 @@
   // fix for dropdown alignment
   padding: 0 !important;
 }
+
+.configomatic_category {
+  border: 1px solid;
+  border-radius: 10px;;
+}
+
+.configomatic_product {
+  border: 1px solid;
+  border-radius: 10px;;
+}
+ .categorie {
+   border: 1px solid;
+   border-radius: 10px;
+   margin: 20px;
+   padding: 15px;
+ }
+
+ .empty_product {
+   color: rgba(15, 67, 236, 0.849);
+   cursor: pointer;   
+ }
+
+ .selected_product {
+   color: rgb(106, 202, 10);
+   cursor: pointer;
+   font-size: 20px;
+ }
+
+ .product {
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 15px;
+ }
+
+ .productDetail {
+   cursor: pointer;
+   color: rgba(15, 67, 236, 0.849);
+   font-size: 13px;
+ }

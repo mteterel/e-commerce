@@ -20,6 +20,10 @@ class ApiService {
     });
   }
 
+  fetchCategoryList() {
+    return this.client.get("/categories/");
+  }
+
   fetchProductsFromCategory(categoryId) {
     return this.client.get("/categories/" + categoryId + "/products");
   }
