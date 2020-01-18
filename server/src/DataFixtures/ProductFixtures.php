@@ -95,6 +95,28 @@ class ProductFixtures extends Fixture
         $product->setCategory($this->getReference("c__CPU"));
 
         $manager->persist($product);
+
+        $product_2 = new Product();
+        $product_2->setName("AMD Ryzen 9 3950X (3.5 GHz)");
+        $product_2->setShortDescription("Processeur Socket AM4 - 16 cores - Cache 7O Mo - Matisse - Ventirad non inclus");
+        $product_2->setPrice(999.90);
+        $product_2->setSku("BX80684A53672Z");
+        $this->injectImages([
+            "https://www.topachat.com/boutique/img/in/in1101/in11018759/in1101875902@2x.jpg",
+            "https://www.topachat.com/boutique/img/in/in1101/in11018759/02b.jpg"
+        ], $product_2, $manager);
+        $this->injectSpecs([
+            "CPUArch" => "Matisse",
+            "CPUSocket" => "AM4",
+            "CPUFrequencyBase" => "3,5 GHz",
+            "CPUFrequencyBoost" => "4,7 GHz",
+            "CPUNumOfCores" => "16",
+            "CPUNumOfThreads" => "32",
+            "CPUInstructionSet" => "x64",
+        ], $product_2, $manager);
+        $product_2->setCategory($this->getReference("c__CPU"));
+
+        $manager->persist($product_2);
     }
 
     public function loadMB(ObjectManager $manager)
@@ -117,6 +139,25 @@ class ProductFixtures extends Fixture
         $product->setCategory($this->getReference("c__Motherboard"));
 
         $manager->persist($product);
+
+        $product_2 = new Product();
+        $product_2->setName("Asus PRIME X470 PRO");
+        $product_2->setShortDescription("Carte mère ATX - Socket AM4 - Chipset AMD X470 - USB 3.1 - SATA 6 Gb/s - M.2");
+        $product_2->setPrice(174.90);
+        $product_2->setSku("PRIME-X470-PRO");
+        $this->injectImages(["https://www.topachat.com/boutique/img/in/in1011/in10111549/in1011154902@2x.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10111549/02.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10111549/03.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10111549/04.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10111549/05.jpg"], $product_2, $manager);
+        $this->injectSpecs([
+            "MBChipset" => "AMD X470",
+            "MBSocket" => "AM4",
+            "MBFormFactor" => "ATX"
+        ], $product_2, $manager);
+        $product_2->setCategory($this->getReference("c__Motherboard"));
+
+        $manager->persist($product_2);
     }
 
     public function load(ObjectManager $manager)
@@ -150,6 +191,24 @@ class ProductFixtures extends Fixture
         $product->setCategory($this->getReference("c__RAM"));
 
         $manager->persist($product);
+
+        $product_2 = new Product();
+        $product_2->setName("DDR3 Corsair Value, 4 Go, 1600 MHz, CAS 11");
+        $product_2->setShortDescription("Mémoire DDR3 - PC-12800 - Low-Profile");
+        $product_2->setPrice(22.90);
+        $product_2->setSku("CMV4GX3M1A1600C11");
+        $this->injectImages([
+            "https://www.topachat.com/boutique/img/in/in1008/in10082288/in1008228802@2x.jpg"
+        ], $product_2, $manager);
+        $this->injectSpecs([
+            "RAMMemoryType" => "DDR3",
+            "RAMCapacity" => "4 GB",
+            "RAMFrequency" => "1600 MHz",
+            "RAMCASLatency" => "11"
+        ], $product_2, $manager);
+        $product_2->setCategory($this->getReference("c__RAM"));
+
+        $manager->persist($product_2);
     }
 
     private function loadGPU2(ObjectManager $manager)
