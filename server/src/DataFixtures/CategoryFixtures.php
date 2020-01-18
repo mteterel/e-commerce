@@ -20,10 +20,6 @@ class CategoryFixtures extends Fixture
                 "slug" => "graphics-card"
             ],
             [
-                "name" => "RAM",
-                "slug" => "memory",
-            ],
-            [
                 "name" => "Motherboard",
                 "slug" => "motherboard",
                 "specsList" =>
@@ -36,6 +32,30 @@ class CategoryFixtures extends Fixture
                             "required" => true
                         ]
                     ]
+            ],
+            [
+                "name" => "SSD",
+                "slug" => "ssd",
+            ],
+            [
+                "name" => "HDD",
+                "slug" => "hdd",
+            ],
+            [
+                "name" => "RAM",
+                "slug" => "memory",
+            ],
+            [
+                "name" => "VENTIRAD",
+                "slug" => "ventirad",
+            ],
+            [
+                "name" => "PC case",
+                "slug" => "pc_case",
+            ],
+            [
+                "name" => "Power Supply",
+                "slug" => "power_supply",
             ]
         ];
 
