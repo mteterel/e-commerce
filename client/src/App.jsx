@@ -8,7 +8,7 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 import { Helmet } from "react-helmet";
 import _BaseLayout from "./views/_BaseLayout";
-import CreateProduct from "./views/CreateProduct";
+import Configomatic from "./views/Configomatic";
 
 const App = () => {
   return (
@@ -23,11 +23,7 @@ const App = () => {
             <Route exact path={"/product/:productId"} component={Product} />
             <Route exact path={"/register"} component={Register} />
             <Route exact path={"/login"} component={Login} />
-            <Route
-              exact
-              path={"/admin/products/add"}
-              component={CreateProduct}
-            />
+            <Route exact path={"/configomatic"} component={Configomatic}/>
             <Route render={() => <h1>Not Found</h1>} />
           </Switch>
         </_BaseLayout>
