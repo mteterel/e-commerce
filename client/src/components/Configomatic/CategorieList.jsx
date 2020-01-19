@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Row, Col } from "react-bootstrap";
+import { MdDeleteForever } from "react-icons/md";
 
 const CategorieList = (props) => {
 
-    const [selected, setSelected] = useState([{name: "Intelcore i7"}]);
-
     return (
-        <div>
-            <h4>Categories list :</h4>            
+        <div key={props.price}>
+            <h4>Categories list :</h4>
+            <p>Total : {props.price}</p>          
             {
                 !props.categoriesList ? 
                     <p>error</p>
@@ -18,10 +19,26 @@ const CategorieList = (props) => {
                             <div className="categorie">
                                 <h5>{category.name}</h5>
                             { 
-                                !selected[i] ?
-                                <aside onClick={() => props.fetchProduct(category.slug)} className="empty_product"><em>Select your {category.name}</em></aside>
+                                props.mySelectedProducts.filter(v => v.cat === category.name).length === 0 ?
+                                <p onClick={() => props.fetchProduct(category.slug)} className="empty_product">
+                                    <em>Select your {category.name}</em>
+                                </p>
                                 :
-                                <aside onClick={() => props.fetchProduct(category.slug)} className="selected_product">{selected[i].name}</aside>
+                                <div>
+                                    <Row>
+                                        <Col lg={11}>
+                                            <p onClick={() => props.fetchProduct(category.slug)} className="selected_product">
+                                                {props.mySelectedProducts.filter(v => v.cat === category.name)[0].name}
+                                            </p>
+                                        </Col>
+                                        <Col lg={1}>
+                                            <MdDeleteForever onClick={() => props.deleteFromMyList(category.name)} size={32} className="add_product"/>
+                                        </Col>
+                                    </Row>
+                                    <p>
+                                        {props.mySelectedProducts.filter(v => v.cat === category.name)[0].price} euros
+                                    </p>
+                                </div>
                             }
                             </div>
                         </div>

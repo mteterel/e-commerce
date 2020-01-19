@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Product from '../../views/Product';
+import { Row, Col } from "react-bootstrap";
+import { MdPlaylistAdd, MdPlaylistAddCheck } from "react-icons/md";
 
 const ProductList = (props) => {
 
@@ -14,27 +15,43 @@ const ProductList = (props) => {
     }
 
     return (
-        <div>
-            <h4>Liste des produits</h4>
-            <button onClick={() => props.clearCategory()}>close</button>
+        <div key={props.mySelectedProducts}>
+            <h4>{props.currentCategory}</h4>            
             {
                 props.productList ?
                 <div>
                     {props.productList.map((product, i) => {
                         return (
                             <div key={i} className="product">
-                                <h6>{product.name}</h6>
-                                <p>{product.price} euros</p>
-                                <p onClick={() => showDetail(product.name)} className="productDetail">Show detail</p>
-                                {Object.entries(product.specs).map(([spec, j]) => {
-                                    return (
-                                        <div>
-                                            { productDetail === product.name && (
-                                                <aside key={j}>{spec}: {j}</aside>
-                                            )}
-                                        </div>
-                                    )
-                                })}
+                                <Row>
+                                    <Col lg={10}>
+                                    <h5><b>{product.name}</b></h5>
+                                    <p>{product.shortDescription}</p>
+                                    <p><b>{product.price} euros</b></p>
+                                    <p onClick={() => showDetail(product.name)} className="productDetail">Show detail</p>
+                                    {Object.entries(product.specs).map(([specname, value]) => {
+                                        return (
+                                            <div key={specname}>
+                                                { productDetail === product.name && (
+                                                    <aside>{specname}: {value}</aside>
+                                                )}
+                                            </div>
+                                        )
+                                    })}
+                                    </Col>
+                                    {
+                                        props.mySelectedProducts.filter(v => v.name === product.name).length === 0 ?
+                                            <Col lg={1}>
+                                                <br /><br />
+                                                <MdPlaylistAdd onClick={() => props.setMyProductsList(product)} size={32} className="add_product"/>
+                                            </Col>
+                                        :
+                                            <Col lg={1} style={{color: 'rgb(106, 202, 10)'}}>
+                                                <br /><br />
+                                                <MdPlaylistAddCheck size={32}/>
+                                            </Col>
+                                    }
+                                </Row>
                             </div>
                         )
                     })}
@@ -42,6 +59,7 @@ const ProductList = (props) => {
                 :
                 ""
             }
+            <button onClick={() => props.clearCategory()}>close</button>
         </div>
     );
 };
