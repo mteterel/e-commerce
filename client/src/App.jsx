@@ -23,7 +23,7 @@ const App = () => {
             <Route exact path={"/product/:productId"} component={Product} />
             <Route exact path={"/register"} component={Register} />
             <Route exact path={"/login"} component={Login} />
-            <Route exact path={"/configomatic"} component={Configomatic}/>
+            <Route exact path={"/pc-builder"} component={Configomatic}/>
             <Route render={() => <h1>Not Found</h1>} />
           </Switch>
         </_BaseLayout>
