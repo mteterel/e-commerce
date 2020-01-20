@@ -7,13 +7,12 @@ const AppNavBar2 = () => {
   return (
     <Navbar
       id={"appNavRoot"}
-      bg="primary"
       variant={"dark"}
       className={styles.navBarRoot}
     >
       <Container>
-        <Nav className="mr-auto">
-          <Nav.Item className={styles.navLinkBase}>
+        <Nav className={styles.mrAuto}>
+          {/* <Nav.Item className={styles.navLinkBase}>
             <NavLink
               exact
               to={"/"}
@@ -22,9 +21,9 @@ const AppNavBar2 = () => {
             >
               Home
             </NavLink>
-          </Nav.Item>
+          </Nav.Item> */}
           <NavDropdown
-            title="Browse"
+            title="Product"
             id="collapsible-nav-dropdown"
             className={styles.navLinkDropdown}
           >
@@ -41,6 +40,27 @@ const AppNavBar2 = () => {
               Memory
             </NavDropdown.Item>
           </NavDropdown>
+          
+          <Nav.Item className={styles.navLinkRight}>
+            <NavLink as={Link} to={"/"} className={styles.navLinkA}>
+              configomatic
+            </NavLink>
+          </Nav.Item>
+          <Nav.Item className={styles.navLinkCenter}>
+            <NavLink as={Link} to={"/"} className={styles.navLinkB}>
+              testlink
+            </NavLink>
+          </Nav.Item>
+          <Nav.Item className={styles.navLinkCenter}>
+            <NavLink as={Link} to={"/"} className={styles.navLinkB}>
+              testlink
+            </NavLink>
+          </Nav.Item>
+          <Nav.Item className={styles.navLinkCenter}>
+            <NavLink as={Link} to={"/"} className={styles.navLinkB}>
+              testlink
+            </NavLink>
+          </Nav.Item>
         </Nav>
       </Container>
     </Navbar>
