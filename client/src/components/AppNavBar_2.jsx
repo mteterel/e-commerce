@@ -33,7 +33,6 @@ const AppNavBar2 = () => {
             key={direction}
             //  style={{border : "1px solid black"}}
           >
-            <FaDesktop />
             <NavDropdown.Item as={Link} to={"/browse/cpu"}>
               CPU
             </NavDropdown.Item>
