@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./AppNavBar_2.module.scss";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import { FaDesktop, FaQuestion, FaRegCommentDots, FaHeadset } from "react-icons/fa";
+import { GiAutoRepair } from "react-icons/gi";
 
 const AppNavBar2 = () => {
   return (
@@ -22,11 +24,16 @@ const AppNavBar2 = () => {
               Home
             </NavLink>
           </Nav.Item> */}
+          
+              {['down'].map(direction => (
           <NavDropdown
-            title="Product"
+            title={` Browse  `}
             id="collapsible-nav-dropdown"
             className={styles.navLinkDropdown}
+            key={direction}
+            //  style={{border : "1px solid black"}}
           >
+            <FaDesktop />
             <NavDropdown.Item as={Link} to={"/browse/cpu"}>
               CPU
             </NavDropdown.Item>
@@ -40,25 +47,30 @@ const AppNavBar2 = () => {
               Memory
             </NavDropdown.Item>
           </NavDropdown>
-          
+              ))}
+
           <Nav.Item className={styles.navLinkRight}>
             <NavLink as={Link} to={"/"} className={styles.navLinkA}>
-              configomatic
+            <FaDesktop className={styles.navBarIcone}/>
+                Computer
+            </NavLink>
+          </Nav.Item>
+          <Nav.Item className={styles.navLinkCenter}>
+            <NavLink as={Link} to={"/pc-builder"} className={styles.navLinkB}>
+            <GiAutoRepair className={styles.navBarIcone}/>
+              PC Builder  
             </NavLink>
           </Nav.Item>
           <Nav.Item className={styles.navLinkCenter}>
             <NavLink as={Link} to={"/"} className={styles.navLinkB}>
-              testlink
+            <FaRegCommentDots className={styles.navBarIcone}/>
+              Question
             </NavLink>
           </Nav.Item>
           <Nav.Item className={styles.navLinkCenter}>
             <NavLink as={Link} to={"/"} className={styles.navLinkB}>
-              testlink
-            </NavLink>
-          </Nav.Item>
-          <Nav.Item className={styles.navLinkCenter}>
-            <NavLink as={Link} to={"/"} className={styles.navLinkB}>
-              testlink
+            <FaHeadset className={styles.navBarIcone}/>
+              Support
             </NavLink>
           </Nav.Item>
         </Nav>
