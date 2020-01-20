@@ -42,7 +42,7 @@ class CategoryController extends AbstractController
                 "id" => $p->getId(),
                 "name" => $p->getName(),
                 "price" => $p->getPrice(),
-//                "shortDescription" => $p->getShortDescription(),
+                "shortDescription" => $p->getShortDescription(),
 //                "advancedDescription" => $p->getAdvancedDescription(),
                 "specs" => $specs,
                 "images" => $images
