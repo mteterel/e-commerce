@@ -1,0 +1,53 @@
+.CenterBlock{
+    //border: 1px solid black;
+    max-width: 80%;
+    margin: auto!important;
+    
+    //margin-left: 0px!important;
+}
+.productItem{
+    display: flex;
+    flex-direction: column;
+    //border: 1px solid black;
+    text-align: center;
+    height: 330px!important;
+    margin: auto!important;
+    & > a {
+    color: #433d3d;
+    text-decoration: none!important;
+    }
+}
+.sizeItem{
+    //border: 1px solid red;
+    width: 300px!important;
+}
+.productItem{
+    border-right: 2px solid #d4d4d4;
+    background-image : linear-gradient(to bottom, #d4d4d4 150px, #fff 5px);
+    //background-color: white;
+    //border-image: linear-gradient(180deg, white, #625b5b 50%, white);
+    // border-image-slice: 1;
+}
+.productItem_last{
+    display: flex;
+    flex-direction: column;
+    //background-color: white;
+    background-image : linear-gradient(to bottom, #d4d4d4 150px, #fff 5px);
+    //border-right: 4px solid #d4d4d4;
+    text-align: center;
+   //margin: 5px;
+    height: 330px!important;
+    margin: auto!important;
+    & > a {
+    color: #433d3d;
+    text-decoration: none!important;
+    }
+}
+.FaChevronRight{
+    color: #d36500;
+}
+.productLinkItem{
+    //border: 1px solid red;
+}
+
+
