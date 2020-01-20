@@ -3,6 +3,7 @@
 
 .container {
   padding: 0 !important;
+  max-width: 80%;
 }
 
 .tab-content {
@@ -66,8 +67,4 @@
    cursor: pointer;
    color: rgba(15, 67, 236, 0.849);
    font-size: 13px;
- }
-
- .add_product {
-   cursor: pointer;
  }
