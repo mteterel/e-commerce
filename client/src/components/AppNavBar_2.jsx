@@ -49,28 +49,28 @@ const AppNavBar2 = () => {
               ))}
 
           <Nav.Item className={styles.navLinkRight}>
-            <NavLink as={Link} to={"/"} className={styles.navLinkA}>
+            <Nav.Link as={Link} to={"/"} className={styles.navLinkA} style={{ paddingTop: "0.3em" }}>
             <FaDesktop className={styles.navBarIcone}/>
                 Computer
-            </NavLink>
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item className={styles.navLinkCenter}>
-            <NavLink as={Link} to={"/pc-builder"} className={styles.navLinkB}>
+            <Nav.Link as={Link} to={"/pc-builder"} className={styles.navLinkB}>
             <GiAutoRepair className={styles.navBarIcone}/>
               PC Builder  
-            </NavLink>
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item className={styles.navLinkCenter}>
-            <NavLink as={Link} to={"/"} className={styles.navLinkB}>
+            <Nav.Link as={Link} to={"/"} className={styles.navLinkB}>
             <FaRegCommentDots className={styles.navBarIcone}/>
               Question
-            </NavLink>
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item className={styles.navLinkCenter}>
-            <NavLink as={Link} to={"/"} className={styles.navLinkB}>
+            <Nav.Link as={Link} to={"/"} className={styles.navLinkB}>
             <FaHeadset className={styles.navBarIcone}/>
               Support
-            </NavLink>
+            </Nav.Link>
           </Nav.Item>
         </Nav>
       </Container>

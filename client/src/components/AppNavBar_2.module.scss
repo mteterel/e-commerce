@@ -19,7 +19,9 @@ hsla(0,0%,100%,0) 0,#fff 50%,
     border-radius: 5px;
   }
 }
-.navLinkRight, .navLinkCenter{ 
+.navLinkRight, .navLinkCenter{
+  box-sizing: content-box;
+
   & > a:hover {
     text-decoration: none!important;
     color: white;
@@ -28,6 +30,7 @@ hsla(0,0%,100%,0) 0,#fff 50%,
 .navLinkDropdown {
   //  margin: 0.4em 2em 0.4em 0;
   // padding: 0 2em;
+  box-sizing: content-box;
 
   & > a {
     color: white !important;
