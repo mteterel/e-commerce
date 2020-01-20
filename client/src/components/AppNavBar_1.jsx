@@ -23,7 +23,7 @@ const AppNavBar1 = props => {
   return (
     <Navbar bg="dark" variant="dark" className={styles.navbar_top} style={{ padding: "1em" }}>
       <Container>
-        <Row>
+        <Row style={{ width: "100%"  }}>
           <Col xs lg="2">
             <Navbar.Brand href="/">
               <img src={Logo} className={styles.BaseLogo} />
