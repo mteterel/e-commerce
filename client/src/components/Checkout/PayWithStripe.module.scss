@@ -1,0 +1,27 @@
+$stripe-brand-color: #32325d;
+
+.button {
+  background-color: $stripe-brand-color;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.175s ease-in;
+  color: white;
+  border: none;
+  width: 240px;
+
+  .text {
+    font-family: sans-serif;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+  .logo {
+    vertical-align: middle;
+    margin-left: 0.3em;
+  }
+
+  &:hover {
+    background-color: lighten($stripe-brand-color, 10%);
+  }
+}

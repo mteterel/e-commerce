@@ -20,6 +20,8 @@ class FirstUserFixtures extends Fixture
     {
         $user = new User();
         $user->setEmail("johndoe@dev");
+        $user->setFirstname("John");
+        $user->setLastname("Doe");
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
             'test'

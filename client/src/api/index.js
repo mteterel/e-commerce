@@ -13,6 +13,15 @@ class ApiService {
       : null;
   }
 
+  signUp(email, password, firstname, lastname) {
+    return this.client.post("/register", {
+      email: email,
+      password: password,
+      firstname: firstname,
+      lastname: lastname
+    });
+  }
+
   login(email, password) {
     return this.client.post("/api/login_check", {
       email: email,
@@ -25,19 +34,26 @@ class ApiService {
   }
 
   fetchProductsFromCategory(categoryId) {
-    return this.client.get("/categories/" + categoryId + "/products");
+    return this.client.get(`/categories/${categoryId}/products`);
   }
 
   fetchFiltersFromCategory(categoryId) {
-    return this.client.get("/categories/" + categoryId + "/filters");
+    return this.client.get(`/categories/${categoryId}/filters`);
   }
 
   fetchProductInfos(productId) {
-    return this.client.get("/products/" + productId);
+    return this.client.get(`/products/${productId}`);
   }
 
   fetchCheckoutResult(orderId) {
-    return this.client.get("/orders/" + orderId);
+    return this.client.get(`/orders/${orderId}/result`);
+  }
+
+  initiateTransaction(items, paymentMethod) {
+    return this.client.post(`/orders/`, {
+      orderProducts: items,
+      paymentMethod: paymentMethod
+    });
   }
 }
 
