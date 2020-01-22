@@ -21,9 +21,14 @@ import styles from "./AppNavBar_1.module.scss";
 
 const AppNavBar1 = props => {
   return (
-    <Navbar bg="dark" variant="dark" className={styles.navbar_top} style={{ padding: "1em" }}>
+    <Navbar
+      bg="dark"
+      variant="dark"
+      className={styles.navbar_top}
+      style={{ padding: "1em" }}
+    >
       <Container>
-        <Row style={{ width: "100%"  }}>
+        <Row style={{ width: "100%" }}>
           <Col xs lg="2">
             <Navbar.Brand href="/">
               <img src={Logo} className={styles.BaseLogo} />
@@ -46,30 +51,34 @@ const AppNavBar1 = props => {
           <Col xs lg="1">
             {/* <Nav> */}
             <div className={styles.test}>
-            <OverlayTrigger
-              trigger={"click"}
-              placement="bottom"
-              overlay={
-                <Popover id={"popover-mini-cart"} className={styles.popover}>
-                  <PopoverContent className={styles.popoverContent}>
-                    <MiniCart />
-                  </PopoverContent>
-                </Popover>
-              }
-            >
-              <Nav.Link className={styles.navlink}>
-                <div className={styles.testdiv}>
-                  <FaShoppingCart
-                    className={styles.FaShoppingCart}
-                    color="white"
-                  />
-                  <Badge pill variant={"primary"} className={styles.BadgeCart}>
-                    {props.cartProducts.length}
-                  </Badge>
-                </div>
-                <span className={styles.cart}>Cart&nbsp;</span>
-              </Nav.Link>
-            </OverlayTrigger>
+              <OverlayTrigger
+                trigger={"click"}
+                placement="bottom"
+                overlay={
+                  <Popover id={"popover-mini-cart"} className={styles.popover}>
+                    <PopoverContent className={styles.popoverContent}>
+                      <MiniCart />
+                    </PopoverContent>
+                  </Popover>
+                }
+              >
+                <Nav.Link className={styles.navlink}>
+                  <div className={styles.testdiv}>
+                    <FaShoppingCart
+                      className={styles.FaShoppingCart}
+                      color="white"
+                    />
+                    <Badge
+                      pill
+                      variant={"primary"}
+                      className={styles.BadgeCart}
+                    >
+                      {props.cartProducts.length}
+                    </Badge>
+                  </div>
+                  <span className={styles.cart}>Cart&nbsp;</span>
+                </Nav.Link>
+              </OverlayTrigger>
             </div>
           </Col>
           <Col xs lg="1">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router";
 import { Col, Form, ListGroup, Row, Spinner } from "react-bootstrap";
 import { Helmet } from "react-helmet";

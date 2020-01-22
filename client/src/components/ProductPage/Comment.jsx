@@ -8,7 +8,7 @@ const Comment = props => {
   return (
     <Row>
       <Col md={1}>
-        <FaUser color={"black"} color={"#161616"} size={"90%"} />
+        <FaUser color={"#161616"} size={"90%"} />
       </Col>
       <Col md={11}>
         <div>

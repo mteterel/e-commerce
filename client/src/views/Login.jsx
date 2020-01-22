@@ -13,7 +13,7 @@ const Login = props => {
     if (props.isLoggedIn) {
       history.push("/");
     }
-  }, [props.isLoggedIn]);
+  }, [history, props.isLoggedIn]);
 
   const handleSubmit = (email, password) => {
     props.loginAsync(email, password);

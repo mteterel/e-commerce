@@ -8,7 +8,7 @@ import "./index.scss";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <App />
   </Provider>,
   document.getElementById("root")
 );

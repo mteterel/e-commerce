@@ -35,6 +35,10 @@ class ApiService {
   fetchProductInfos(productId) {
     return this.client.get("/products/" + productId);
   }
+
+  fetchCheckoutResult(orderId) {
+    return this.client.get("/orders/" + orderId);
+  }
 }
 
 export default new ApiService();

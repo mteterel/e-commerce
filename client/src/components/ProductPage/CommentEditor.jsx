@@ -25,7 +25,7 @@ const CommentEditor = props => {
           setIsSending(false);
         });
     }
-  }, [isSending]);
+  }, [content, isSending, props.productId, rating]);
 
   const handleSubmit = e => {
     e.preventDefault();

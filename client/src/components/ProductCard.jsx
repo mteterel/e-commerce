@@ -15,7 +15,7 @@ const ProductCard = props => {
       v => v.productInfo.id === props.product.id
     );
     return item ? item.quantity : 0;
-  }, [props.cartProducts]);
+  }, [props.cartProducts, props.product.id]);
 
   const handleMouseEnter = () => {
     setDisplayAdd(true);
