@@ -38,7 +38,7 @@ const App = props => {
             <Route exact path={"/register"} component={Register} />
             <Route exact path={"/login"} component={Login} />
             <Route exact path={"/pc-builder"} component={Configomatic} />
-            <Route exact path={"/checkout/:orderUuid"} component={Checkout} />
+            <Route exact path={"/checkout/"} component={Checkout} />
             <Route
               exact
               path={"/checkout/:orderUuid/success"}

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import ProductQuantityControl from "../components/ProductQuantityControl";
 import { getCartItems, getTotalPrice } from "../store/cart";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const Cart = props => {
   const proceedToCheckout = () => {
@@ -58,6 +59,8 @@ const Cart = props => {
               <span>{props.totalCartPrice.toFixed(2)} €</span>
             </div>
             <Button
+              as={Link}
+              to={"/checkout"}
               variant={"primary"}
               size={"sm"}
               block
