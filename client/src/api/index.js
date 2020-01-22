@@ -34,19 +34,26 @@ class ApiService {
   }
 
   fetchProductsFromCategory(categoryId) {
-    return this.client.get("/categories/" + categoryId + "/products");
+    return this.client.get(`/categories/${categoryId}/products`);
   }
 
   fetchFiltersFromCategory(categoryId) {
-    return this.client.get("/categories/" + categoryId + "/filters");
+    return this.client.get(`/categories/${categoryId}/filters`);
   }
 
   fetchProductInfos(productId) {
-    return this.client.get("/products/" + productId);
+    return this.client.get(`/products/${productId}`);
   }
 
   fetchCheckoutResult(orderId) {
-    return this.client.get("/orders/" + orderId);
+    return this.client.get(`/orders/${orderId}/result`);
+  }
+
+  initiateTransaction(items, paymentMethod) {
+    return this.client.post(`/orders/`, {
+      orderProducts: items,
+      paymentMethod: paymentMethod
+    });
   }
 }
 

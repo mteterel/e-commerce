@@ -10,16 +10,33 @@ const cartSlice = createSlice({
           productInfo: payload,
           quantity: 1
         });
+
+      localStorage.setItem("cartProducts", JSON.stringify(state));
+      return state;
     },
     removeItem: (state, { payload }) => {
-      return state.filter(v => v.productInfo.id !== payload.productId);
+      const newState = state.filter(
+        v => v.productInfo.id !== payload.productId
+      );
+      localStorage.setItem("cartProducts", JSON.stringify(newState));
+      return newState;
     },
     updateQuantity: (state, { payload }) => {
-      if (payload.quantity <= 0)
-        return state.filter(v => v.productInfo.id !== payload.productId);
+      let newState = state;
 
-      state.find(v => v.productInfo.id === payload.productId).quantity =
-        payload.quantity;
+      if (payload.quantity <= 0)
+        newState = state.filter(v => v.productInfo.id !== payload.productId);
+      else
+        newState = state.find(
+          v => v.productInfo.id === payload.productId
+        ).quantity = payload.quantity;
+
+      localStorage.setItem("cartProducts", JSON.stringify(newState));
+      return newState;
+    },
+    importCart: (state, { payload }) => {
+      state.length = 0;
+      return JSON.parse(payload);
     }
   }
 });
@@ -33,5 +50,10 @@ export const getTotalPrice = createSelector(getCartItems, items =>
   )
 );
 
-export const { addItem, removeItem, updateQuantity } = cartSlice.actions;
+export const {
+  addItem,
+  removeItem,
+  updateQuantity,
+  importCart
+} = cartSlice.actions;
 export default cartSlice;
