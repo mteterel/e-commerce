@@ -91,6 +91,7 @@ class ProductFixtures extends Fixture
             "CPUNumOfCores" => "6",
             "CPUNumOfThreads" => "6",
             "CPUInstructionSet" => "x64",
+            "CPURam" => "DDR4"
         ], $product, $manager);
         $product->setCategory($this->getReference("c__CPU"));
 
@@ -113,6 +114,7 @@ class ProductFixtures extends Fixture
             "CPUNumOfCores" => "16",
             "CPUNumOfThreads" => "32",
             "CPUInstructionSet" => "x64",
+            "CPURam" => "DDR4"
         ], $product_2, $manager);
         $product_2->setCategory($this->getReference("c__CPU"));
 
@@ -134,7 +136,8 @@ class ProductFixtures extends Fixture
         $this->injectSpecs([
             "MBChipset" => "Intel® Z390",
             "MBSocket" => "LGA 1151",
-            "MBFormFactor" => "ATX"
+            "MBFormFactor" => "ATX",
+            "MBRam" => "DDR4"
         ], $product, $manager);
         $product->setCategory($this->getReference("c__Motherboard"));
 
@@ -153,7 +156,8 @@ class ProductFixtures extends Fixture
         $this->injectSpecs([
             "MBChipset" => "AMD X470",
             "MBSocket" => "AM4",
-            "MBFormFactor" => "ATX"
+            "MBFormFactor" => "ATX",
+            "MBRam" => "DDR4"
         ], $product_2, $manager);
         $product_2->setCategory($this->getReference("c__Motherboard"));
 
@@ -167,6 +171,13 @@ class ProductFixtures extends Fixture
         $this->loadCPU($manager);
         $this->loadMB($manager);
         $this->loadRAM($manager);
+        $this->loadSSD($manager);
+        $this->loadSSD2($manager);
+        $this->loadSSD3($manager);
+        $this->loadHDD($manager);
+        $this->loadHDD2($manager);
+        $this->loadPCCase($manager);
+        $this->loadPCCase2($manager);
 
         $manager->flush();
     }
@@ -242,6 +253,239 @@ class ProductFixtures extends Fixture
             "GPURTCores" => "48"
         ], $product, $manager);
         $product->setCategory($this->getReference("c__GPU"));
+
+        $review = new Review();
+        $review->setUser($this->getReference("testuser"));
+        $review->setComment("Je suis un Pangolin Malin !");
+        $review->setRating(3.0);
+        $manager->persist($review);
+
+        $product->addReview($review);
+
+        $manager->persist($product);
+    }
+
+    private function loadSSD(ObjectManager $manager)
+    {
+        $product = new Product();
+        $product->setName("Corsair Force MP510, 240 Go, M.2");
+        $product->setShortDescription("SSD - NVMe - Contrôleur Phison PS5012-E12 - Lecture max : 3100 Mo/s - Ecriture max : 1050 Mo/s - Mémoire TLC 3D");
+        $product->setPrice(74.90);
+        $product->setSku("CSSD-F240GBMP510");
+        $this->injectImages([
+            "https://www.topachat.com/boutique/img/in/in1011/in10115015/in1011501502@2x.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10115015/02.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10115015/03.jpg",
+        ], $product, $manager);
+        $this->injectSpecs([
+            "SSDFormat" => "M.2 (Type 2280)",
+            "SSDCapacity" => "240 Go",
+            "SSDInterface" => "NVMe (PCI-E 3.0 4x)",
+            "SSDMemory" => "TLC 3D",
+            "SSDLectureDebit" => "3100 Mo/s",
+            "SSDEcritureDebit" => "1050 Mo/s",
+            "SSDDimensions" => "22 x 80 mm",
+            "SSDTBW" => "400 To ou 1,8M d'heures",
+        ], $product, $manager);
+        $product->setCategory($this->getReference("c__SSD"));
+
+        $review = new Review();
+        $review->setUser($this->getReference("testuser"));
+        $review->setComment("Je suis un Pangolin Malin !");
+        $review->setRating(3.0);
+        $manager->persist($review);
+
+        $product->addReview($review);
+
+        $manager->persist($product);
+    }
+
+    private function loadSSD2(ObjectManager $manager)
+    {
+        $product = new Product();
+        $product->setName("Aorus NVMe SSD, 1 To");
+        $product->setShortDescription("SSD - NVMe - Contrôleur Phison PS5012-E12 - Lecture max : 3480 Mo/s - Ecriture max : 2000 Mo/s - Mémoire TLC 3D");
+        $product->setPrice(109.90);
+        $product->setSku("CSSD-F480GBMP510");
+        $this->injectImages([
+            "https://www.topachat.com/boutique/img/in/in1011/in10115016/in1011501602@2x.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10115016/02.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10115016/03.jpg",
+        ], $product, $manager);
+        $this->injectSpecs([
+            "SSDFormat" => "M.2 (Type 2280)",
+            "SSDCapacity" => "480 Go",
+            "SSDInterface" => "NVMe (PCI-E 4.0 4x)",
+            "SSDMemory" => "TLC 3D",
+            "SSDLectureDebit" => "3480 Mo/s",
+            "SSDEcritureDebit" => "2000 Mo/s",
+            "SSDDimensions" => "22 x 80 mm",
+            "SSDTBW" => "800 To ou 1,8M d'heures"            
+        ], $product, $manager);
+        $product->setCategory($this->getReference("c__SSD"));
+
+        $review = new Review();
+        $review->setUser($this->getReference("testuser"));
+        $review->setComment("Je suis un Pangolin Malin !");
+        $review->setRating(3.0);
+        $manager->persist($review);
+
+        $product->addReview($review);
+
+        $manager->persist($product);
+    }
+
+    private function loadSSD3(ObjectManager $manager)
+    {
+        $product = new Product();
+        $product->setName("Corsair Force MP510, 480 Go, M.2");
+        $product->setShortDescription("SSD - NVMe - Contrôleur Phison PS5016-E16 - Lecture max : 5000 Mo/s - Ecriture max : 4400 Mo/s - Mémoire TLC 3D");
+        $product->setPrice(329.90);
+        $product->setSku("GP-ASM2NE6100TTTD");
+        $this->injectImages([
+            "https://www.topachat.com/boutique/img/in/in1101/in11017752/in1101775202@2x.jpg",
+            "https://www.topachat.com/boutique/img/in/in1101/in11017752/02.jpg",
+            "https://www.topachat.com/boutique/img/in/in1101/in11017752/03.jpg",
+        ], $product, $manager);
+        $this->injectSpecs([
+            "SSDFormat" => "M.2 (Type 2280)",
+            "SSDCapacity" => "1 To",
+            "SSDInterface" => "NVMe (PCI-E 4.0 4x)",
+            "SSDMemory" => "TLC 3D",
+            "SSDLectureDebit" => "5000 Mo/s",
+            "SSDEcritureDebit" => "4400 Mo/s",
+            "SSDDimensions" => "22 x 80 mm",            
+        ], $product, $manager);
+        $product->setCategory($this->getReference("c__SSD"));
+
+        $review = new Review();
+        $review->setUser($this->getReference("testuser"));
+        $review->setComment("Je suis un Pangolin Malin !");
+        $review->setRating(3.0);
+        $manager->persist($review);
+
+        $product->addReview($review);
+
+        $manager->persist($product);
+    }
+
+    private function loadHDD(ObjectManager $manager)
+    {
+        $product = new Product();
+        $product->setName("Western Digital WD Blue, 500 Go");
+        $product->setShortDescription("Disque dur 3.5 - 5400 tpm - 64 Mo - SATA III - Bulk");
+        $product->setPrice(52.90);
+        $product->setSku(" WD5000AZRZ");
+        $this->injectImages([
+            "https://www.topachat.com/boutique/img/in/in1009/in10092720/in1009272002@2x.jpg",
+            "https://www.topachat.com/boutique/img/in/in1009/in10092720/10.jpg",            
+        ], $product, $manager);
+        $this->injectSpecs([
+            "HDDFormat" => "3.5",
+            "HDDCapacity" => "500 Go",
+            "HDDInterface" => "SATA III - 6.0 Gbps",
+            "HDDSpeed" => "5 400 tpm",
+            "HDDCacheMemory" => "64 Mo",            
+        ], $product, $manager);
+        $product->setCategory($this->getReference("c__HDD"));
+
+        $review = new Review();
+        $review->setUser($this->getReference("testuser"));
+        $review->setComment("Je suis un Pangolin Malin !");
+        $review->setRating(3.0);
+        $manager->persist($review);
+
+        $product->addReview($review);
+
+        $manager->persist($product);
+    }
+
+    private function loadHDD2(ObjectManager $manager)
+    {
+        $product = new Product();
+        $product->setName("Seagate BarraCuda, 1 To");
+        $product->setShortDescription("Disque dur 3.5 - 7200 tpm - 64 Mo - SATA III - Bulk");
+        $product->setPrice(47.90);
+        $product->setSku("ST1000DM010");
+        $this->injectImages([
+            "https://www.topachat.com/boutique/img/in/in1010/in10100245/01.jpg",
+            "https://www.topachat.com/boutique/img/in/in1010/in10100245/03.jpg",
+            "https://www.topachat.com/boutique/img/in/in1010/in10100245/04.jpg",
+        ], $product, $manager);
+        $this->injectSpecs([
+            "HDDFormat" => "3.5",
+            "HDDCapacity" => "1 To",
+            "HDDInterface" => "SATA III",
+            "HDDSpeed" => "7200 tpm",
+            "HDDCacheMemory" => "64 Mo",            
+        ], $product, $manager);
+        $product->setCategory($this->getReference("c__HDD"));
+
+        $review = new Review();
+        $review->setUser($this->getReference("testuser"));
+        $review->setComment("Je suis un Pangolin Malin !");
+        $review->setRating(3.0);
+        $manager->persist($review);
+
+        $product->addReview($review);
+
+        $manager->persist($product);
+    }
+
+    private function loadPCCase(ObjectManager $manager)
+    {
+        $product = new Product();
+        $product->setName("Zalman T6, Noir");
+        $product->setShortDescription("Boitier PC Moyen Tour - ATX / mATX / Mini-ITX - USB 3.0");
+        $product->setPrice(33.90);
+        $product->setSku("T6BK");
+        $this->injectImages([
+            "https://www.topachat.com/boutique/img/in/in1011/in10119254/01.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10119254/02.jpg",
+            "https://www.topachat.com/boutique/img/in/in1011/in10119254/03.jpg",
+        ], $product, $manager);
+        $this->injectSpecs([
+            "PCCaseType" => "Boitier moyen tour",
+            "PCCaseDimension" => "200 x 430 x 377 mm",
+            "PCCaseGPU" => "Max 28O mm",
+            "PCCaseCPU" => "ATX / MicroATX / MiniATX",
+            "PCCaseUSB" => "2x 2.0, 1x 3.0",
+            "PCCaseWeight" => "2.3 Kg"            
+        ], $product, $manager);
+        $product->setCategory($this->getReference("c__PC case"));
+
+        $review = new Review();
+        $review->setUser($this->getReference("testuser"));
+        $review->setComment("Je suis un Pangolin Malin !");
+        $review->setRating(3.0);
+        $manager->persist($review);
+
+        $product->addReview($review);
+
+        $manager->persist($product);
+    }
+
+    private function loadPCCase2(ObjectManager $manager)
+    {
+        $product = new Product();
+        $product->setName("Aerocool CS-102, Noir");
+        $product->setShortDescription("Boitier PC Mini Tour - mATX / Mini-ITX - USB 3.0");
+        $product->setPrice(29.90);
+        $product->setSku("EN51660");
+        $this->injectImages([
+            "https://www.topachat.com/boutique/img/in/in1010/in10105734/in1010573402.jpg",
+            "https://www.topachat.com/boutique/img/in/in1010/in10105734/01.jpg",
+            "https://www.topachat.com/boutique/img/in/in1010/in10105734/02.jpg",
+        ], $product, $manager);
+        $this->injectSpecs([
+            "PCCaseType" => "Boitier mini tour",
+            "PCCaseDimension" => "190 x 345 x 372 mm",
+            "PCCaseGPU" => "Max 24O mm",
+            "PCCaseCPU" => "ATX/MiniATX",
+            "PCCaseUSB" => "1x 2.0, 1x 3.0",
+            "PCCaseWeight" => "1.9 Kg"            
+        ], $product, $manager);
+        $product->setCategory($this->getReference("c__PC case"));
 
         $review = new Review();
         $review->setUser($this->getReference("testuser"));
