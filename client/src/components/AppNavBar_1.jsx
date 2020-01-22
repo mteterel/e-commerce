@@ -16,14 +16,14 @@ import {
 import MiniCart from "./MiniCart";
 import { connect } from "react-redux";
 import Logo from "../assets/master.png";
-import { FaSearch, FaShoppingCart, FaUser, FaDesktop } from "react-icons/fa";
+import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import styles from "./AppNavBar_1.module.scss";
 
 const AppNavBar1 = props => {
   return (
     <Navbar bg="dark" variant="dark" className={styles.navbar_top} style={{ padding: "1em" }}>
       <Container>
-        <Row style={{ width: "80%", margin: "auto" }}>
+        <Row style={{ width: "100%"  }}>
           <Col xs lg="2">
             <Navbar.Brand href="/">
               <img src={Logo} className={styles.BaseLogo} />
