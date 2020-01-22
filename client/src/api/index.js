@@ -13,6 +13,15 @@ class ApiService {
       : null;
   }
 
+  signUp(email, password, firstname, lastname) {
+    return this.client.post("/register", {
+      email: email,
+      password: password,
+      firstname: firstname,
+      lastname: lastname
+    });
+  }
+
   login(email, password) {
     return this.client.post("/api/login_check", {
       email: email,
