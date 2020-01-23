@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "easycorp/easyadmin-bundle": "^2.3",
+        "egulias/email-validator": "^2.1",
         "lexik/jwt-authentication-bundle": "^2.6",
         "nelmio/cors-bundle": "^2.0",
         "ramsey/uuid-doctrine": "^1.5",

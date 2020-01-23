@@ -59,6 +59,12 @@ class RegistrationController extends AbstractController
             
             $user->setFirstname($request['firstname']);
             $user->setLastname($request['lastname']);
+            if(!preg_match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $request['email'])) {
+                $errors = ["This Email is not valid"];
+                return $this->json([
+                    "errors" => $errors
+                ]);
+            }
             $user->setEmail($request['email']);
             $password = $passwordEncoder->encodePassword($user, $request['password']);
             $user->setPassword($password);

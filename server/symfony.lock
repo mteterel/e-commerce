@@ -115,6 +115,9 @@
             "config/routes/easy_admin.yaml"
         ]
     },
+    "egulias/email-validator": {
+        "version": "2.1.15"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
