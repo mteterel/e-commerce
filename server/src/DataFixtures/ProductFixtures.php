@@ -85,13 +85,13 @@ class ProductFixtures extends Fixture
         ], $product, $manager);
         $this->injectSpecs([
             "CPUArch" => "Coffee Lake Refresh",
-            "CPUSocket" => "LGA 1151",
+            "Socket" => "LGA 1151",
             "CPUFrequencyBase" => "3,7 GHz",
             "CPUFrequencyBoost" => "4,6 GHz",
             "CPUNumOfCores" => "6",
             "CPUNumOfThreads" => "6",
             "CPUInstructionSet" => "x64",
-            "CPURam" => "DDR4"
+            "RamType" => "DDR4"
         ], $product, $manager);
         $product->setCategory($this->getReference("c__CPU"));
 
@@ -108,13 +108,13 @@ class ProductFixtures extends Fixture
         ], $product_2, $manager);
         $this->injectSpecs([
             "CPUArch" => "Matisse",
-            "CPUSocket" => "AM4",
+            "Socket" => "AM4",
             "CPUFrequencyBase" => "3,5 GHz",
             "CPUFrequencyBoost" => "4,7 GHz",
             "CPUNumOfCores" => "16",
             "CPUNumOfThreads" => "32",
             "CPUInstructionSet" => "x64",
-            "CPURam" => "DDR4"
+            "RamType" => "DDR4"
         ], $product_2, $manager);
         $product_2->setCategory($this->getReference("c__CPU"));
 
@@ -135,9 +135,9 @@ class ProductFixtures extends Fixture
             "https://www.topachat.com/boutique/img/in/in1011/in10114534/05.jpg"], $product, $manager);
         $this->injectSpecs([
             "MBChipset" => "Intel® Z390",
-            "MBSocket" => "LGA 1151",
-            "MBFormFactor" => "ATX",
-            "MBRam" => "DDR4"
+            "Socket" => "LGA 1151",
+            "FormFactor" => "ATX",
+            "RamType" => "DDR4"
         ], $product, $manager);
         $product->setCategory($this->getReference("c__Motherboard"));
 
@@ -155,9 +155,9 @@ class ProductFixtures extends Fixture
             "https://www.topachat.com/boutique/img/in/in1011/in10111549/05.jpg"], $product_2, $manager);
         $this->injectSpecs([
             "MBChipset" => "AMD X470",
-            "MBSocket" => "AM4",
-            "MBFormFactor" => "ATX",
-            "MBRam" => "DDR4"
+            "Socket" => "AM4",
+            "FormFactor" => "ATX",
+            "RamType" => "DDR4"
         ], $product_2, $manager);
         $product_2->setCategory($this->getReference("c__Motherboard"));
 
@@ -194,7 +194,7 @@ class ProductFixtures extends Fixture
             "https://www.topachat.com/boutique/img/in/in1011/in10116968/01.jpg"
         ], $product, $manager);
         $this->injectSpecs([
-            "RAMMemoryType" => "DDR4",
+            "RamType" => "DDR4",
             "RAMCapacity" => "16 GB",
             "RAMFrequency" => "3200 MHz",
             "RAMCASLatency" => "16"
@@ -212,7 +212,7 @@ class ProductFixtures extends Fixture
             "https://www.topachat.com/boutique/img/in/in1008/in10082288/in1008228802@2x.jpg"
         ], $product_2, $manager);
         $this->injectSpecs([
-            "RAMMemoryType" => "DDR3",
+            "RamType" => "DDR3",
             "RAMCapacity" => "4 GB",
             "RAMFrequency" => "1600 MHz",
             "RAMCASLatency" => "11"
@@ -448,7 +448,7 @@ class ProductFixtures extends Fixture
             "PCCaseType" => "Boitier moyen tour",
             "PCCaseDimension" => "200 x 430 x 377 mm",
             "PCCaseGPU" => "Max 28O mm",
-            "PCCaseCPU" => "ATX / MicroATX / MiniATX",
+            "FormFactor" => "ATX / MicroATX / MiniATX",
             "PCCaseUSB" => "2x 2.0, 1x 3.0",
             "PCCaseWeight" => "2.3 Kg"            
         ], $product, $manager);
@@ -481,7 +481,7 @@ class ProductFixtures extends Fixture
             "PCCaseType" => "Boitier mini tour",
             "PCCaseDimension" => "190 x 345 x 372 mm",
             "PCCaseGPU" => "Max 24O mm",
-            "PCCaseCPU" => "ATX/MiniATX",
+            "FormFactor" => "ATX/MiniATX",
             "PCCaseUSB" => "1x 2.0, 1x 3.0",
             "PCCaseWeight" => "1.9 Kg"            
         ], $product, $manager);

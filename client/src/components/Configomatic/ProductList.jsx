@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import { MdPlaylistAdd, MdPlaylistAddCheck } from "react-icons/md";
+import { MdPlaylistAdd, MdPlaylistAddCheck, MdEuroSymbol } from "react-icons/md";
 
 const ProductList = props => {
   const [productDetail, setProductDetail] = useState("");
@@ -28,7 +28,7 @@ const ProductList = props => {
                     </h5>
                     <p>{product.shortDescription}</p>
                     <p>
-                      <b>{product.price} euros</b>
+                      <b>{product.price.toFixed(2)} <MdEuroSymbol/></b>
                     </p>
                     <p
                       onClick={() => showDetail(product.name)}

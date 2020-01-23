@@ -1,12 +1,12 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { MdDeleteForever } from "react-icons/md";
+import { MdDeleteForever, MdEuroSymbol } from "react-icons/md";
 
 const CategorieList = props => {
   return (
     <div>
       <h4>Categories list :</h4>
-      <p>Total : {props.price}</p>
+      <p>Total : {props.price.toFixed(2)} <MdEuroSymbol/> </p>
       {!props.categoriesList ? (
         <p>error</p>
       ) : (
@@ -53,9 +53,9 @@ const CategorieList = props => {
                         {
                           props.mySelectedProducts.filter(
                             v => v.cat === category.name
-                          )[0].price
+                          )[0].price.toFixed(2)
                         }{" "}
-                        euros
+                        <MdEuroSymbol/>                        
                       </p>
                     </div>
                   )}
