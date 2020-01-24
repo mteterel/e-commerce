@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { Col, Row } from "react-bootstrap";
-import { MdPlaylistAdd, MdPlaylistAddCheck, MdEuroSymbol } from "react-icons/md";
+import { Col, Row, Image, Button } from "react-bootstrap";
+import {
+  MdPlaylistAdd,
+  MdPlaylistAddCheck,
+  MdEuroSymbol
+} from "react-icons/md";
 
 const ProductList = props => {
   const [productDetail, setProductDetail] = useState("");
@@ -23,12 +27,26 @@ const ProductList = props => {
               <div key={i} className="product">
                 <Row>
                   <Col lg={10}>
+                    <Image
+                      fluid
+                      width={80}
+                      height={"auto"}
+                      src={product.images[0]}
+                    />
+                    <Image
+                      fluid
+                      width={80}
+                      height={"auto"}
+                      src={product.images[1]}
+                    />
                     <h5>
                       <b>{product.name}</b>
                     </h5>
                     <p>{product.shortDescription}</p>
                     <p>
-                      <b>{product.price.toFixed(2)} <MdEuroSymbol/></b>
+                      <b>
+                        {product.price.toFixed(2)} <MdEuroSymbol />
+                      </b>
                     </p>
                     <p
                       onClick={() => showDetail(product.name)}
@@ -74,7 +92,9 @@ const ProductList = props => {
       ) : (
         ""
       )}
-      <button onClick={() => props.clearCategory()}>close</button>
+      <Button className="resetConfig" onClick={() => props.clearCategory()}>
+        close
+      </Button>
     </div>
   );
 };
