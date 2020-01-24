@@ -4,7 +4,6 @@ import ProductList from "../components/Configomatic/ProductList";
 import { Col, Row, Button } from "react-bootstrap";
 import apiService from "../api";
 import AddConfigToCartButton from "../components/Configomatic/AddConfigToCartButton";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 const Configomatic = props => {
