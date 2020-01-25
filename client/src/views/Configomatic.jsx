@@ -231,7 +231,7 @@ const Configomatic = props => {
 
   return (
     <div>
-      <h2>Configomatic</h2>
+      <h2 className="text-primary">PC BUILDER</h2>
 
       {!categoriesList ? (
         <p>Loading ...</p>
@@ -246,13 +246,15 @@ const Configomatic = props => {
                 deleteFromMyList={deleteFromMyList}
                 price={priceMemo}
               />
-              <AddConfigToCartButton
-                product={mySelectedProducts}
-                buttonProps={{ size: "sm", block: true }}
-              />
-              <Button className="resetConfig" onClick={clearMyProductList}>
-                Reset
-              </Button>
+              <div className="buttonContainer">
+                <AddConfigToCartButton
+                  product={mySelectedProducts}
+                  buttonProps={{ size: "sm", block: true }}
+                />
+                <Button className="resetConfig" onClick={clearMyProductList}>
+                  Reset
+                </Button>
+              </div>
             </Col>
           ) : (
             <Col md={12} className="configomatic_product">

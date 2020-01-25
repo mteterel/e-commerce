@@ -29,24 +29,22 @@
   padding: 0 !important;
 }
 
-.configomatic_category {
-  border: 1px solid;
-  border-radius: 10px;;
+.buttonContainer {
+  padding-top: 10px;
+  border-top: 1px solid;
 }
 
-.configomatic_product {
-  border: 1px solid;
-  border-radius: 10px;;
-}
- .categorie {
-   border: 1px solid;
-   border-radius: 10px;
-   margin: 20px;
-   padding: 15px;
+.categorie {
+   border-top: 1px solid;
+   margin: 5px;
+   padding: 10px;
+ }
+
+ .configPrice {
+   font-weight: bold;
  }
 
  .empty_product {
-   color: rgba(15, 67, 236, 0.849);
    cursor: pointer;   
  }
 
@@ -57,9 +55,7 @@
  }
 
  .product {
-    border: 1px solid;
-    border-radius: 10px;
-    margin: 20px;
+    border-top: 1px solid;
     padding: 15px;
  }
 
@@ -73,5 +69,20 @@
    width: 100%;
    height: 30px;
    margin-top: 5px;
-   margin-bottom: 10px;
+ }
+
+.logoContainer {
+  text-align: center;
+}
+
+ .categoriesLogo {
+   margin-top: 0.42rem;
+   width: 50px;
+   padding-left: auto;
+   padding-right: auto;
+ }
+
+ .productPrice {
+   margin-left: 2rem;
+   font-weight: bold;
  }
