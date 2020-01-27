@@ -4,6 +4,7 @@ import { Col, Container, Row, Tab, Tabs, Button } from "react-bootstrap";
 import SpecListTable from "../ProductPage/SpecListTable";
 import ProductGallery from "../ProductGallery";
 import { MdPlaylistAddCheck } from "react-icons/md";
+import CommentTab from "../ProductPage/CommentTab";
 
 const ProductDetail = props => {
   return (
@@ -70,6 +71,12 @@ const ProductDetail = props => {
                         <SpecListTable specs={props.product.specs} />
                       </Tab>
                     )}
+                  <Tab eventKey="reviews" title="Reviews">
+                    <CommentTab
+                      productId={props.product.id}
+                      reviews={props.reviews}
+                    />
+                  </Tab>
                 </Tabs>
               </div>
             </Col>

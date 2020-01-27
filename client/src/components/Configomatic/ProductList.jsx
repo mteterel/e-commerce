@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { Col, Row, Image, Button } from "react-bootstrap";
 import ProductDetail from "./ProductDetail";
-import {
-  MdPlaylistAdd,
-  MdPlaylistAddCheck,
-  MdEuroSymbol
-} from "react-icons/md";
+import apiService from "../../api";
+import { MdPlaylistAddCheck, MdEuroSymbol } from "react-icons/md";
 
 const ProductList = props => {
   const [productDetail, setProductDetail] = useState("");
+  const [reviews, setReviews] = useState([]);
 
-  const showDetail = name => {
-    if (productDetail === "" && productDetail !== name) {
-      setProductDetail(name);
+  const showDetail = product => {
+    if (productDetail === "" && productDetail !== product.name) {
+      setProductDetail(product.name);
+      apiService.fetchProductInfos(product.id).then(res => {
+        setReviews(res.data.reviews);
+      });
     } else {
       setProductDetail("");
+      setReviews([]);
     }
   };
 
@@ -24,7 +26,6 @@ const ProductList = props => {
 
   return (
     <div key={props.mySelectedProducts}>
-      {/* <h4>{props.currentCategory}</h4> */}
       {props.productList ? (
         <div>
           {props.productList.map((product, i) => {
@@ -41,7 +42,7 @@ const ProductList = props => {
                         {product.price.toFixed(2)} <MdEuroSymbol />
                       </p>
                       <p
-                        onClick={() => showDetail(product.name)}
+                        onClick={() => showDetail(product)}
                         className="productDetail"
                       >
                         Show detail
@@ -76,13 +77,14 @@ const ProductList = props => {
                   <Row>
                     <Col md={12}>
                       <p
-                        onClick={() => showDetail(product.name)}
+                        onClick={() => showDetail(product)}
                         className="productDetail"
                       >
                         Close detail
                       </p>
                       <ProductDetail
                         product={product}
+                        reviews={reviews}
                         setMySelectedProduct={setMySelectedProduct}
                         mySelectedProducts={props.mySelectedProducts}
                       />

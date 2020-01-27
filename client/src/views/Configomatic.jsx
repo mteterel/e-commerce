@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 
 const Configomatic = props => {
   const [categoriesList, setCategoriesList] = useState("");
+  const [storage, setStorage] = useState(false);
   const [productList, setProductList] = useState("");
   const [currentCategory, setCurrentcategory] = useState("");
   const [mySelectedProducts, setMySelectedProducts] = useState([]);
@@ -36,9 +37,22 @@ const Configomatic = props => {
   }, [mySelectedProducts]);
 
   useEffect(() => {
+    if (storage == true) {
+      localStorage.setItem("myconfig", JSON.stringify(mySelectedProducts));
+    } else {
+      setStorage(true);
+    }
+  }, [mySelectedProducts, storage]);
+
+  useEffect(() => {
     apiService.fetchCategoryList().then(res => {
       setCategoriesList(res.data.categories);
     });
+    let test = localStorage.getItem("myconfig");
+    test = JSON.parse(test);
+    if (test !== null) {
+      setMySelectedProducts(test);
+    }
   }, []);
 
   const fetchCategory = () => {
@@ -82,7 +96,6 @@ const Configomatic = props => {
           break;
 
         case "Motherboard":
-          console.log(compList.Socket);
           if (
             compList.RamType.ref != null &&
             compList.RamType.nb_component > 0
@@ -120,10 +133,10 @@ const Configomatic = props => {
       );
       var newList = mySelectedProducts;
       newList.splice(targetIndex, 1);
-      setMySelectedProducts(newList);
+      await setMySelectedProducts(newList);
     }
 
-    setMySelectedProducts(actualProducts => [
+    await setMySelectedProducts(actualProducts => [
       ...actualProducts,
       {
         cat: currentCategory,
@@ -135,9 +148,7 @@ const Configomatic = props => {
         price: product.price
       }
     ]);
-
     updateCompList(product);
-
     setCurrentcategory("");
     setProductList("");
   };
