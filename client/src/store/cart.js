@@ -27,14 +27,15 @@ const cartSlice = createSlice({
       if (payload.quantity <= 0)
         newState = state.filter(v => v.productInfo.id !== payload.productId);
       else
-        newState = state.find(
-          v => v.productInfo.id === payload.productId
-        ).quantity = payload.quantity;
+        newState.find(v => v.productInfo.id === payload.productId).quantity =
+          payload.quantity;
 
       localStorage.setItem("cartProducts", JSON.stringify(newState));
       return newState;
     },
     importCart: (state, { payload }) => {
+      if (false === Array.isArray(JSON.parse(payload))) return [];
+
       state.length = 0;
       return JSON.parse(payload);
     }

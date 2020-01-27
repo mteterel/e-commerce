@@ -45,7 +45,11 @@ const AppNavBar2 = () => {
             >
               {categories.map((cat, i) => {
                 return (
-                  <NavDropdown.Item as={Link} to={`/browse/${cat.slug}`}>
+                  <NavDropdown.Item
+                    as={Link}
+                    to={`/browse/${cat.slug}`}
+                    key={i}
+                  >
                     {cat.name}
                   </NavDropdown.Item>
                   // <NavDropdown.Item as={Link} to={"/browse/motherboard"}>
