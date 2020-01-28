@@ -20,7 +20,7 @@ const CategoriesHome = props => {
         <div className={styles.DivHome}>
             {/* <Container className={styles.ContainerHome}> */}
                 <Row className={styles.RowColumn}>
-                    <Col xs="12" md="6" lg="3">
+                    <Col xs="12" sm="6" md="6" lg="3">
                         <Link to={"/"} className={styles.LinkCategories}>
                             <div className={styles.DivName}>
                                 <img src={GraphiqueCard} className={styles.Cpu}></img>
@@ -29,7 +29,7 @@ const CategoriesHome = props => {
                         </Link>
                     </Col>
 
-                    <Col xs="12" md="6" lg="3">
+                    <Col xs="12" sm="6" md="6" lg="3">
                         <Link to={"/"}>
                             <div className={styles.DivName}>
                                 <img src={MotherBoard} className={styles.Cpu}></img>
@@ -38,7 +38,7 @@ const CategoriesHome = props => {
                         </Link>
                     </Col>
 
-                    <Col xs="12" md="6" lg="3">
+                    <Col xs="12" sm="6" md="6" lg="3">
                         <Link to={"/"}>
                             <div className={styles.DivName}>
                                 <img src={Cpu} className={styles.Cpu}></img>
@@ -47,7 +47,7 @@ const CategoriesHome = props => {
                         </Link>
                     </Col>
 
-                    <Col xs="12" md="6" lg="3">
+                    <Col xs="12" sm="6" md="6" lg="3">
                         <Link to={"/"}>
                             <div className={styles.DivName}>
                                 <img src={Ram} className={styles.Cpu}></img>
@@ -56,7 +56,7 @@ const CategoriesHome = props => {
                         </Link>
                     </Col>
 
-                    <Col xs="12" md="6" lg="3">
+                    <Col xs="12" sm="6" md="6" lg="3">
                         <Link to={"/"}>
                             <div className={styles.DivName}>
                                 <img src={Ventirad} className={styles.Cpu}></img>
@@ -65,7 +65,7 @@ const CategoriesHome = props => {
                         </Link>
                     </Col>
 
-                    <Col xs="12" md="6"  lg="3">
+                    <Col xs="12" sm="6" md="6"  lg="3">
                         <Link to={"/"}>
                             <div className={styles.DivName}>
                                 <img src={Ssd} className={styles.Cpu}></img>
@@ -74,7 +74,7 @@ const CategoriesHome = props => {
                         </Link>
                     </Col>
 
-                    <Col xs="12" md="6" lg="3">
+                    <Col xs="12" sm="6" md="6" lg="3">
                         <Link to={"/"}>
                             <div className={styles.DivName}>
                                 <img src={Alim} className={styles.Cpu}></img>
@@ -83,7 +83,7 @@ const CategoriesHome = props => {
                         </Link>
                     </Col>
 
-                    <Col xs="12" md="6" lg="3">
+                    <Col xs="12" sm="6" md="6" lg="3">
                         <Link to={"/"}>
                             <div className={styles.DivName}>
                                 <img src={Boitier} className={styles.Cpu}></img>
