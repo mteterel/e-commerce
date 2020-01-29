@@ -39,19 +39,23 @@ const Configomatic = props => {
   useEffect(() => {
     if (storage == true) {
       localStorage.setItem("myconfig", JSON.stringify(mySelectedProducts));
+      localStorage.setItem("mycompat", JSON.stringify(compList));
     } else {
       setStorage(true);
     }
-  }, [mySelectedProducts, storage]);
+  }, [compList, mySelectedProducts, storage]);
 
   useEffect(() => {
     apiService.fetchCategoryList().then(res => {
       setCategoriesList(res.data.categories);
     });
-    let test = localStorage.getItem("myconfig");
-    test = JSON.parse(test);
-    if (test !== null) {
-      setMySelectedProducts(test);
+    let config = localStorage.getItem("myconfig");
+    let compat = localStorage.getItem("mycompat");
+    config = JSON.parse(config);
+    compat = JSON.parse(compat);
+    if (config !== null && compat !== null) {
+      setMySelectedProducts(config);
+      setCompList(compat);
     }
   }, []);
 
