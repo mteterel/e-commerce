@@ -13,7 +13,7 @@ const MiniCart = props => {
         <>
           <Table size={"sm"}>
             {props.cartProducts.map((v, i) => (
-              <MiniCartItem product={v} index={i} />
+              <MiniCartItem product={v} index={i} key={i} />
             ))}
           </Table>
           <div>

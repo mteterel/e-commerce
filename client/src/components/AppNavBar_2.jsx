@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./AppNavBar_2.module.scss";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import apiService from "../api";
 import {
   FaDesktop,
   FaQuestion,
@@ -11,6 +12,14 @@ import {
 import { GiAutoRepair } from "react-icons/gi";
 
 const AppNavBar2 = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    apiService.fetchCategoryList().then(res => {
+      setCategories(res.data.categories);
+    });
+  }, []);
+
   return (
     <Navbar id={"appNavRoot"} variant={"dark"} className={styles.navBarRoot}>
       <Container>
@@ -34,18 +43,26 @@ const AppNavBar2 = () => {
               key={direction}
               //  style={{border : "1px solid black"}}
             >
-              <NavDropdown.Item as={Link} to={"/browse/cpu"}>
-                CPU
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={"/browse/motherboard"}>
-                Motherboard
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={"/browse/graphics-card"}>
-                Graphics Card
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={"/browse/memory"}>
-                Memory
-              </NavDropdown.Item>
+              {categories.map((cat, i) => {
+                return (
+                  <NavDropdown.Item
+                    as={Link}
+                    to={`/browse/${cat.slug}`}
+                    key={i}
+                  >
+                    {cat.name}
+                  </NavDropdown.Item>
+                  // <NavDropdown.Item as={Link} to={"/browse/motherboard"}>
+                  //   Motherboard
+                  // </NavDropdown.Item>
+                  // <NavDropdown.Item as={Link} to={"/browse/graphics-card"}>
+                  //   Graphics Card
+                  // </NavDropdown.Item>
+                  // <NavDropdown.Item as={Link} to={"/browse/memory"}>
+                  //   Memory
+                  // </NavDropdown.Item>
+                );
+              })}
             </NavDropdown>
           ))}
 

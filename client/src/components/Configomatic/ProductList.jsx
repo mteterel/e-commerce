@@ -1,80 +1,108 @@
 import React, { useState } from "react";
-import { Col, Row } from "react-bootstrap";
-import { MdPlaylistAdd, MdPlaylistAddCheck, MdEuroSymbol } from "react-icons/md";
+import { Col, Row, Image, Button } from "react-bootstrap";
+import ProductDetail from "./ProductDetail";
+import apiService from "../../api";
+import { MdPlaylistAddCheck, MdEuroSymbol } from "react-icons/md";
 
 const ProductList = props => {
   const [productDetail, setProductDetail] = useState("");
+  const [reviews, setReviews] = useState([]);
 
-  const showDetail = name => {
-    if (productDetail === "" && productDetail !== name) {
-      setProductDetail(name);
+  const showDetail = product => {
+    if (productDetail === "" && productDetail !== product.name) {
+      setProductDetail(product.name);
+      apiService.fetchProductInfos(product.id).then(res => {
+        setReviews(res.data.reviews);
+      });
     } else {
       setProductDetail("");
+      setReviews([]);
     }
+  };
+
+  const setMySelectedProduct = product => {
+    props.setMyProductsList(product);
   };
 
   return (
     <div key={props.mySelectedProducts}>
-      <h4>{props.currentCategory}</h4>
       {props.productList ? (
         <div>
           {props.productList.map((product, i) => {
             return (
               <div key={i} className="product">
-                <Row>
-                  <Col lg={10}>
-                    <h5>
-                      <b>{product.name}</b>
-                    </h5>
-                    <p>{product.shortDescription}</p>
-                    <p>
-                      <b>{product.price.toFixed(2)} <MdEuroSymbol/></b>
-                    </p>
-                    <p
-                      onClick={() => showDetail(product.name)}
-                      className="productDetail"
-                    >
-                      Show detail
-                    </p>
-                    {Object.entries(product.specs).map(([specname, value]) => {
-                      return (
-                        <div key={specname}>
-                          {productDetail === product.name && (
-                            <aside>
-                              {specname}: {value}
-                            </aside>
-                          )}
+                {productDetail !== product.name && (
+                  <Row>
+                    <Col md={10}>
+                      <h5>
+                        <b>{product.name}</b>
+                      </h5>
+                      <p>{product.shortDescription}</p>
+                      <p className={"text-primary"}>
+                        {product.price.toFixed(2)} <MdEuroSymbol />
+                      </p>
+                      <p
+                        onClick={() => showDetail(product)}
+                        className="productDetail"
+                      >
+                        Show detail
+                      </p>
+                    </Col>
+                    <Col md={2}>
+                      {props.mySelectedProducts.filter(
+                        v => v.name === product.name
+                      ).length === 0 ? (
+                        <div>
+                          <br />
+                          <br />
+                          <Button
+                            onClick={() => props.setMyProductsList(product)}
+                            size={32}
+                            className="add_product"
+                          >
+                            add to config
+                          </Button>
                         </div>
-                      );
-                    })}
-                  </Col>
-                  {props.mySelectedProducts.filter(v => v.name === product.name)
-                    .length === 0 ? (
-                    <Col lg={1}>
-                      <br />
-                      <br />
-                      <MdPlaylistAdd
-                        onClick={() => props.setMyProductsList(product)}
-                        size={32}
-                        className="add_product"
+                      ) : (
+                        <div style={{ color: "rgb(106, 202, 10)" }}>
+                          <br />
+                          <br />
+                          <MdPlaylistAddCheck size={32} />
+                        </div>
+                      )}
+                    </Col>
+                  </Row>
+                )}
+                {productDetail === product.name && (
+                  <Row>
+                    <Col md={12}>
+                      <p
+                        onClick={() => showDetail(product)}
+                        className="productDetail"
+                      >
+                        Close detail
+                      </p>
+                      <ProductDetail
+                        product={product}
+                        reviews={reviews}
+                        setMySelectedProduct={setMySelectedProduct}
+                        mySelectedProducts={props.mySelectedProducts}
                       />
                     </Col>
-                  ) : (
-                    <Col lg={1} style={{ color: "rgb(106, 202, 10)" }}>
-                      <br />
-                      <br />
-                      <MdPlaylistAddCheck size={32} />
-                    </Col>
-                  )}
-                </Row>
+                  </Row>
+                )}
               </div>
             );
           })}
         </div>
       ) : (
-        ""
+        <div>Loading ...</div>
       )}
-      <button onClick={() => props.clearCategory()}>close</button>
+      <div className="buttonContainer">
+        <Button className="resetConfig" onClick={() => props.clearCategory()}>
+          close
+        </Button>
+      </div>
     </div>
   );
 };
