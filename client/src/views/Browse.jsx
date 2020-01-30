@@ -35,28 +35,47 @@ const Browse = () => {
       });
   }, [params.categoryId]);
 
-  const handleChangeFilters = ((index, value, checked) => {
+  const handleChangeFilters = (specName, specValue, checked) => {
     setFilters(filters => {
       if (checked) {
-        return [...filters, value];
+        if (filters.find(filter => filter.specName === specName)) {
+          let target = filters.find(filter => filter.specName === specName);
+          target.specValue.push(specValue);
+          return [...filters];
+        } else {
+          return [...filters, { specName, specValue: [specValue] }];
+        }
       } else {
-        return filters.filter(v => v !== value);
+        let target = filters.find(filter => filter.specName === specName);
+        let index = target.specValue.indexOf(specValue);
+        target.specValue.splice(index, 1);
+        return [...filters];
       }
     });
-  });
+  };
 
   const filteredProducts = useMemo(() => {
-    // products tableau complet -- filteredProducts tableau trié
-    // Récupérer products -> chercher la spec dans la state pour trier
-    // Retourner le résultat
-    let filtered = products;
-    console.log('Memo function');
-    filters.map((vfilter, ifilter) => {
-      filtered.map((vproduct, iproduct) => {
-        console.log(vproduct);
+    let match = null;
+    let filteredProducts = [];
+    products.map((product, i) => {
+      match = true;
+      Object.entries(product.specs).map(([specName, specValue]) => {
+        filters.map((filter, i) => {
+          if (
+            filter.specName === specName &&
+            filter.specValue.length !== 0 &&
+            !filter.specValue.includes(specValue)
+          ) {
+            match = false;
+          }
+        });
       });
+      if (match) {
+        filteredProducts.push(product);
+      }
     });
-    return filtered;
+    console.log(filters);
+    return filteredProducts;
   }, [filters, products]);
 
   return (
@@ -71,12 +90,22 @@ const Browse = () => {
           <Col md={3}>
             <div className={"bg-light"}>
               <ListGroup style={{ fontSize: "12px" }}>
-                {Object.keys(availableFilters).map((v, index) => (
+                {Object.keys(availableFilters).map((specName, index) => (
                   <ListGroup.Item key={index} style={{ padding: "0.5em 1em" }}>
-                    <strong>{SpecTranslation[v] ?? v}</strong>
+                    <strong>{SpecTranslation[specName] ?? specName}</strong>
                     <div style={{ marginLeft: "1em" }}>
-                      {availableFilters[v].map((w, index) => (
-                        <Form.Check key={index} label={w} onChange={(e) => { handleChangeFilters(v, w, e.currentTarget.checked) }}/>
+                      {availableFilters[specName].map((specValue, index) => (
+                        <Form.Check
+                          key={index}
+                          label={specValue}
+                          onChange={e => {
+                            handleChangeFilters(
+                              specName,
+                              specValue,
+                              e.currentTarget.checked
+                            );
+                          }}
+                        />
                       ))}
                     </div>
                   </ListGroup.Item>
