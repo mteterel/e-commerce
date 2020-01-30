@@ -303,7 +303,7 @@ class ProductFixtures extends Fixture
     private function loadSSD2(ObjectManager $manager)
     {
         $product = new Product();
-        $product->setName("Aorus NVMe SSD, 1 To");
+        $product->setName("Corsair Force MP510, 480 Go, M.2");
         $product->setShortDescription("SSD - NVMe - Contrôleur Phison PS5012-E12 - Lecture max : 3480 Mo/s - Ecriture max : 2000 Mo/s - Mémoire TLC 3D");
         $product->setPrice(109.90);
         $product->setSku("CSSD-F480GBMP510");
@@ -338,7 +338,7 @@ class ProductFixtures extends Fixture
     private function loadSSD3(ObjectManager $manager)
     {
         $product = new Product();
-        $product->setName("Corsair Force MP510, 480 Go, M.2");
+        $product->setName("Aorus NVMe SSD, 1 To");
         $product->setShortDescription("SSD - NVMe - Contrôleur Phison PS5016-E16 - Lecture max : 5000 Mo/s - Ecriture max : 4400 Mo/s - Mémoire TLC 3D");
         $product->setPrice(329.90);
         $product->setSku("GP-ASM2NE6100TTTD");
