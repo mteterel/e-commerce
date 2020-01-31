@@ -11,7 +11,6 @@ const Browse = () => {
   const [categoryName, setCategoryName] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [products, setProducts] = useState([]);
-  const [productCount, setProductCount] = useState(0);
   const [filters, setFilters] = useState([]);
   const [availableFilters, setAvailableFilters] = useState([]);
 
@@ -27,7 +26,6 @@ const Browse = () => {
       .fetchProductsFromCategory(params.categoryId)
       .then(res => {
         setProducts(res.data.products);
-        setProductCount(res.data.productsCount);
         setCategoryName(res.data.categoryName);
       })
       .finally(() => {
@@ -78,6 +76,10 @@ const Browse = () => {
     return filteredProducts;
   }, [filters, products]);
 
+  const productCount = useMemo(() => {
+    return products.length;
+  }, [products]);
+
   return (
     <div>
       {categoryName && <Helmet title={categoryName} />}
@@ -88,7 +90,7 @@ const Browse = () => {
       ) : (
         <Row>
           <Col md={3}>
-            <div className={"bg-light"}>
+            <div>
               <ListGroup style={{ fontSize: "12px" }}>
                 {Object.keys(availableFilters).map((specName, index) => (
                   <ListGroup.Item key={index} style={{ padding: "0.5em 1em" }}>

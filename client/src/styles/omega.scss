@@ -5,9 +5,8 @@ $dark: black;
 $secondary: #161616;
 $font-family-sans-serif: "Roboto", sans-serif;
 $card-bg: #e4e4e4;
+
 body {
-  background-image: url("../assets/bg.jpg");
+  background: url("../assets/bg.jpg") no-repeat center center fixed;
   background-size: cover;
-  background-position: 0 0;
-  background-repeat: no-repeat;
 }

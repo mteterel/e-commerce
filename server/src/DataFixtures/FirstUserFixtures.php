@@ -26,6 +26,7 @@ class FirstUserFixtures extends Fixture
             $user,
             'test'
         ));
+        $user->setRoles(["ROLE_ADMIN"]);
         $this->addReference("testuser", $user);
         $manager->persist($user);
         $manager->flush();
