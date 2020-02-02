@@ -21,7 +21,7 @@ const CategoriesHome = props => {
             {/* <Container className={styles.ContainerHome}> */}
                 <Row className={styles.RowColumn}>
                     <Col xs="12" sm="6" md="6" lg="3">
-                        <Link to={"/"} className={styles.LinkCategories}>
+                        <Link as={Link} to={"/browse/gpu"} className={styles.LinkCategories}>
                             <div className={styles.DivName}>
                                 <img src={GraphiqueCard} className={styles.Cpu}></img>
                                 <strong><p className={styles.NameToImg}>GRAPHIQUE CARD<FaAngleRight className={styles.FaAngleRight}/></p></strong>
@@ -30,7 +30,7 @@ const CategoriesHome = props => {
                     </Col>
 
                     <Col xs="12" sm="6" md="6" lg="3">
-                        <Link to={"/"}>
+                        <Link as={Link} to={"/browse/motherboard"}>
                             <div className={styles.DivName}>
                                 <img src={MotherBoard} className={styles.Cpu}></img>
                                 <strong><p className={styles.NameToImg}>MOTHER BOARD<FaAngleRight className={styles.FaAngleRight}/></p></strong>
@@ -39,7 +39,7 @@ const CategoriesHome = props => {
                     </Col>
 
                     <Col xs="12" sm="6" md="6" lg="3">
-                        <Link to={"/"}>
+                        <Link as={Link} to={"/browse/cpu"}>
                             <div className={styles.DivName}>
                                 <img src={Cpu} className={styles.Cpu}></img>
                                 <strong><p className={styles.NameToImg}>CPU<FaAngleRight className={styles.FaAngleRight}/></p></strong>
@@ -48,7 +48,7 @@ const CategoriesHome = props => {
                     </Col>
 
                     <Col xs="12" sm="6" md="6" lg="3">
-                        <Link to={"/"}>
+                        <Link as={Link} to={"/browse/memory"}>
                             <div className={styles.DivName}>
                                 <img src={Ram} className={styles.Cpu}></img>
                                 <strong><p className={styles.NameToImg}>RAM<FaAngleRight className={styles.FaAngleRight}/></p></strong>
@@ -57,7 +57,7 @@ const CategoriesHome = props => {
                     </Col>
 
                     <Col xs="12" sm="6" md="6" lg="3">
-                        <Link to={"/"}>
+                        <Link as={Link} to={"/browse/ventirad"}>
                             <div className={styles.DivName}>
                                 <img src={Ventirad} className={styles.Cpu}></img>
                                 <strong><p className={styles.NameToImg}>VENTIRAD<FaAngleRight className={styles.FaAngleRight}/></p></strong>
@@ -66,7 +66,7 @@ const CategoriesHome = props => {
                     </Col>
 
                     <Col xs="12" sm="6" md="6"  lg="3">
-                        <Link to={"/"}>
+                        <Link as={Link} to={"/browse/ssd"}>
                             <div className={styles.DivName}>
                                 <img src={Ssd} className={styles.Cpu}></img>
                                 <strong><p className={styles.NameToImg}>SSD/HDD<FaAngleRight className={styles.FaAngleRight}/></p></strong>
@@ -75,7 +75,7 @@ const CategoriesHome = props => {
                     </Col>
 
                     <Col xs="12" sm="6" md="6" lg="3">
-                        <Link to={"/"}>
+                        <Link as={Link} to={"/browse/power_supply"}>
                             <div className={styles.DivName}>
                                 <img src={Alim} className={styles.Cpu}></img>
                                 <strong><p className={styles.NameToImg}>ALIMENTATION<FaAngleRight className={styles.FaAngleRight}/></p></strong>
@@ -84,7 +84,7 @@ const CategoriesHome = props => {
                     </Col>
 
                     <Col xs="12" sm="6" md="6" lg="3">
-                        <Link to={"/"}>
+                        <Link as={Link} to={"/browse/case"}>
                             <div className={styles.DivName}>
                                 <img src={Boitier} className={styles.Cpu}></img>
                                 <strong><p className={styles.NameToImg}>CASE<FaAngleRight className={styles.FaAngleRight}/></p></strong>

@@ -1,4 +1,5 @@
 
+$card-bg: #e4e4e4;
 .RowColumn{
     //border: 1px solid black;
     width: 100%;
@@ -13,15 +14,18 @@
      //border: 1px solid red;
 }
 .DivName{
-    border: 1px solid black;
+    border-left: 1px solid blac k;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
     border-radius : 0px 0px 4px 4px;
-    border-image: linear-gradient(transparent, grey) 10;
+    border-image: linear-gradient(transparent, white) 10;
     // border-radius : 5px 5px 5px 5px;
     text-align: center;
     margin-bottom: 20px;
+    //border-top: 1px solid transparent!important;
     // background-color: white!important;
     background-size: 50%;
-    background: linear-gradient(0deg, white 40%, transparent  60%);
+    background: linear-gradient(0deg, rgb(182, 181, 181) 20%, transparent  60%);
     
 }
 .DivName::after{

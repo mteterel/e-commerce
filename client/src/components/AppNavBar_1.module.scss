@@ -1,28 +1,33 @@
+
 .BaseLogo {
-  width: 110%;
-  // border: 1px solid red;
+  width: 106%;
+  //margin-left: 10px;
+ // border: 1px solid red;
+}
+.container_nav1{  
+  margin-left: auto!important;
+  margin-right: auto!important;
+  margin-top: 0!important;
+}
+.navbar_top{
+  background: linear-gradient(90deg,#353535 0,#515151 20%,#515151 46%,#353535);
+  border-bottom: 1px solid orange;
+  height: 125px;
 }
 .FaShoppingCart {
-  // border: 1px solid green;
   margin-left: -10px;
   size: 100%;
   width: 50px;
   height: 50px;
 }
 .FaUser {
-  // border: 1px solid red;
   width: 46px;
   height: 46px;
   size: 100%;
   margin-left: 5px;
   margin-top: 4px;
 }
-.user {
-  //border: 1px solid green;
-  // padding-top: 15px;
-}
 .test {
-  //    border: 1px solid green;
   width: 100%;
   text-align: center;
 }
@@ -57,9 +62,56 @@
     // width: 120px;
     // padding-left: 380px;
 }
-.navbar_top{
-  background: linear-gradient(90deg,#353535 0,#515151 20%,#515151 46%,#353535);
-  height: 160px;
+
+
+
+////////////////////////////////////////////////////////////////////
+.container_nav1{
+  //border: 1px solid white;
+  margin: 0;
+  // margin-top: -16px!important;
 }
 
+// @media(max-width:992px){
 
+//   .container_nav1{
+//     border: 1px solid white;
+//     margin-top: 0px;
+//     max-width: 100%!important;
+//   }
+
+// }
+.col{
+  //border:1px solid green;
+  margin: 0!important;
+  padding: 0!important;
+}
+@media(max-width:992px){
+  .BaseLogo{
+    width: 100%;
+    //border: 1px solid white;
+  }
+  .FaShoppingCart{
+    //border: 1px solid white;
+    margin-top: 30px;
+  }
+  .FaUser{
+    margin-top: 35px;
+  }
+  .BadgeCart{
+    margin-top: 30px;
+    right: -15px!important;
+  }
+  .search_bar{
+    width: 120%!important;
+  }
+}
+@media(max-width:767px){
+  .search_bar{
+    width: 100%!important;
+  }
+  .BadgeCart{
+    margin-top: 30px;
+    right: 30px!important;
+  }
+}
