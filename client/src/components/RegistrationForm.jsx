@@ -36,12 +36,12 @@ const RegistrationForm = props => {
         </Form.Group>
         <Form.Group controlId="formBasicFirstName">
           <Form.Label>First Name</Form.Label>
-          <Form.Control 
-            type="text" 
-            placeholder="" 
+          <Form.Control
+            type="text"
+            placeholder=""
             value={firstname}
             onChange={e => setFirstname(e.target.value)}
-        />
+          />
         </Form.Group>
         <Form.Group controlId="formBasicLastName">
           <Form.Label>Last Name</Form.Label>
@@ -56,7 +56,7 @@ const RegistrationForm = props => {
           Submit
         </Button>
         <div className={"text-center"}>
-          Have an account ? <Link to={"/"}>Log in</Link>
+          Have an account ? <Link to={"/login"}>Log in</Link>
         </div>
       </Form>
     </div>

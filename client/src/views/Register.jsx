@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Container } from "react-bootstrap";
 import { useHistory } from "react-router";
-import { useState } from 'react';
+import { useState } from "react";
 import apiService from "../api";
 import RegistrationForm from "../components/RegistrationForm";
 
@@ -11,7 +11,8 @@ const Register = () => {
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (email, password, firstname, lastname) => {
-    apiService.signUp(email, password, firstname, lastname)
+    apiService
+      .signUp(email, password, firstname, lastname)
       .then(res => {
         if (res.data.errors) {
           setErrors(res.data.errors);
@@ -21,24 +22,21 @@ const Register = () => {
       })
       .catch(err => {
         alert(err);
-    });
+      });
   };
 
   return (
     <div>
       <Helmet title={"Register"} />
       <Container>
-        <h2>REGISTER :</h2>
+        <h2 className={"og-page-title"}>Register</h2>
+        <hr />
         <ul>
           {errors.map((v, i) => (
-            <li key={i}>
-              {v}
-            </li>
+            <li key={i}>{v}</li>
           ))}
         </ul>
-        <RegistrationForm
-          onSubmit={handleSubmit}
-        />
+        <RegistrationForm onSubmit={handleSubmit} />
       </Container>
     </div>
   );

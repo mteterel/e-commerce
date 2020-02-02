@@ -46,7 +46,9 @@ export const getCartItems = state => state.cart;
 export const getTotalPrice = createSelector(getCartItems, items =>
   items.reduce(
     (acc, v) =>
-      Math.round((acc + v.productInfo.price * v.quantity) * 100) / 100,
+      (
+        Math.round((acc + v.productInfo.price * v.quantity) * 100) / 100
+      ).toFixed(2),
     0
   )
 );

@@ -18,7 +18,7 @@ const ProductGallery = props => {
         dots={true}
         infinite={true}
         autoplay={true}
-        autoplaySpeed={2000}
+        autoplaySpeed={2800}
         dotsClass={"slick-dots slick-thumb"}
         slidesToShow={1}
         slidesToScroll={1}

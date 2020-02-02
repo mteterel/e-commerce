@@ -7,14 +7,10 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const Cart = props => {
-  const proceedToCheckout = () => {
-    // TODO: initiate checkout session from here
-  };
-
   return (
     <div>
       <Helmet title={"Cart"} />
-      <Container>
+      <Container fluid>
         <Row>
           <Col md={9}>
             <Table>
@@ -56,7 +52,7 @@ const Cart = props => {
           <Col md={"3"} className={"bg-light"}>
             <div>
               <strong>TOTAL PRICE: </strong>
-              <span>{props.totalCartPrice.toFixed(2)} €</span>
+              <span>{props.totalCartPrice} €</span>
             </div>
             <Button
               as={Link}
@@ -64,7 +60,6 @@ const Cart = props => {
               variant={"primary"}
               size={"sm"}
               block
-              onClick={proceedToCheckout}
             >
               Checkout
             </Button>

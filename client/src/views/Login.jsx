@@ -23,7 +23,8 @@ const Login = props => {
     <div>
       <Helmet title={"Login"} />
       <Container>
-        <h2>LOGIN:</h2>
+        <h2 className={"og-page-title"}>Login</h2>
+        <hr />
         <LoginForm onSubmit={handleSubmit} />
       </Container>
     </div>

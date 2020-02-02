@@ -37,7 +37,7 @@ const Configomatic = props => {
   }, [mySelectedProducts]);
 
   useEffect(() => {
-    if (storage == true) {
+    if (storage === true) {
       localStorage.setItem("myconfig", JSON.stringify(mySelectedProducts));
       localStorage.setItem("mycompat", JSON.stringify(compList));
     } else {
@@ -246,7 +246,7 @@ const Configomatic = props => {
 
   return (
     <div>
-      <h2 className="text-primary">PC BUILDER</h2>
+      <h2 className={"og-page-title"}>PC BUILDER</h2>
 
       {!categoriesList ? (
         <p>Loading ...</p>

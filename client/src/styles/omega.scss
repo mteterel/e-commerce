@@ -1,12 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Roboto+Condensed&display=swap');
 
 $primary: #d36500;
 $dark: black;
 $secondary: #161616;
 $font-family-sans-serif: "Roboto", sans-serif;
-$card-bg: #e4e4e4;
 
 body {
   background: url("../assets/bg.jpg") no-repeat center center fixed;
   background-size: cover;
+}
+
+.og-page-title {
+  border-left: 3px solid $primary;
+  padding-left: 0.3em;
+  font-family: "Roboto Condensed", "Arial Narrow", sans-serif;
 }

@@ -19,9 +19,7 @@ const MiniCart = props => {
           <div>
             <strong>
               Total:{" "}
-              <span className={"text-primary"}>
-                {props.totalCartPrice.toFixed(2)} €
-              </span>
+              <span className={"text-primary"}>{props.totalCartPrice} €</span>
             </strong>
           </div>
           <Link to={"/cart"} className={"btn btn-primary btn-block"}>
