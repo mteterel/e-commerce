@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import apiService from "../api";
+import CategoriesHome from "../components/CategoriesHome";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
@@ -14,7 +15,8 @@ const Home = () => {
 
   return (
     <div>
-      {categories ? (
+      <CategoriesHome />
+      {/* {categories ? (
         <div>
           <Helmet title={"Home"} />
           <div>
@@ -31,7 +33,7 @@ const Home = () => {
         </div>
       ) : (
         <div>Loading...</div>
-      )}
+      )} */}
     </div>
   );
 };
