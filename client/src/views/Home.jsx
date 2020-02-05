@@ -15,10 +15,10 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet title={"Home"} />
       <CategoriesHome />
       {/* {categories ? (
         <div>
-          <Helmet title={"Home"} />
           <div>
             <ul>
               {categories.map((v, i) => (

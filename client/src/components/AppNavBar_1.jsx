@@ -19,6 +19,7 @@ import Logo from "../assets/gorillaz.png";
 import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import styles from "./AppNavBar_1.module.scss";
+import { Link } from "react-router-dom";
 
 const AppNavBar1 = props => {
   return (
@@ -30,18 +31,23 @@ const AppNavBar1 = props => {
     >
       <Container className={styles.container_nav1}>
         <Row className={styles.container_nav1}>
-          <Col md={{ span:9, order:1}}  
-               lg={{span:3, order:1}}
-               xs={{ span:12, order:1}} 
-               className={styles.col}>
+          <Col
+            md={{ span: 9, order: 1 }}
+            lg={{ span: 3, order: 1 }}
+            xs={{ span: 12, order: 1 }}
+            className={styles.col}
+          >
             <Navbar.Brand href="/">
               <img src={Logo} className={styles.BaseLogo} />
             </Navbar.Brand>
           </Col>
-          <Col  lg={{ span:7, order:2}} 
-                md={{ span:10, order:12}}
-                xs={{ span:12, order:4}} 
-                className={styles.col} className={styles.coltest}>            
+          <Col
+            lg={{ span: 7, order: 2 }}
+            md={{ span: 10, order: 12 }}
+            xs={{ span: 12, order: 4 }}
+            className={styles.col}
+            className={styles.coltest}
+          >
             <InputGroup className={styles.search_bar}>
               <FormControl
                 className={styles.search}
@@ -55,10 +61,12 @@ const AppNavBar1 = props => {
               </InputGroup.Append>
             </InputGroup>
           </Col>
-          <Col md={{span : 1, order: 10}}  
-               lg={{span : 1, order : 11}}
-               xs={{ span:6, order:2}}  
-               className={styles.col}>
+          <Col
+            md={{ span: 1, order: 10 }}
+            lg={{ span: 1, order: 11 }}
+            xs={{ span: 6, order: 2 }}
+            className={styles.col}
+          >
             {/* <Nav> */}
             <div className={styles.test}>
               <OverlayTrigger
@@ -91,14 +99,16 @@ const AppNavBar1 = props => {
               </OverlayTrigger>
             </div>
           </Col>
-          <Col md={{span : 1, order: 11}} 
-               lg={{span : 1, order : 12}} 
-               xs={{ span:6, order:3 }} 
-               className={styles.col}>
-            <Nav.Link>
+          <Col
+            md={{ span: 1, order: 11 }}
+            lg={{ span: 1, order: 12 }}
+            xs={{ span: 6, order: 3 }}
+            className={styles.col}
+          >
+            <Nav.Link as={Link} to={"/login"}>
               <FiUser className={styles.FaUser} color="white" />
               <span className={styles.user}>
-                {props.user.username ?? "Account"}
+                {props.user.username ?? "Login"}
               </span>
             </Nav.Link>
             {/* </Nav> */}
