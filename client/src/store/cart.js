@@ -44,13 +44,13 @@ const cartSlice = createSlice({
 
 export const getCartItems = state => state.cart;
 export const getTotalPrice = createSelector(getCartItems, items =>
-  items.reduce(
-    (acc, v) =>
-      (
-        Math.round((acc + v.productInfo.price * v.quantity) * 100) / 100
-      ).toFixed(2),
-    0
-  )
+  items
+    .reduce(
+      (acc, v) =>
+        Math.round((acc + v.productInfo.price * v.quantity) * 100) / 100,
+      0
+    )
+    .toFixed(2)
 );
 
 export const {

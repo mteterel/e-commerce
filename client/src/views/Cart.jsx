@@ -43,7 +43,7 @@ const Cart = props => {
                         quantity={v.quantity}
                       />
                     </td>
-                    <td>{(v.quantity * v.productInfo.price).toFixed(2)} €</td>
+                    <td>{v.quantity * v.productInfo.price} €</td>
                   </tr>
                 ))}
               </tbody>
